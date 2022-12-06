@@ -1,6 +1,10 @@
 import {Link} from 'react-router-dom';
+import  {useEffect} from 'react';
 import {useParams} from 'react-router-dom';  //to get id of the course which help to fetch form database
 function CourseDetail(){
+  useEffect(()=>{
+    document.title='Course Detail';
+});
     let {course_id}=useParams();
     return(
          <div className="container mt-4 ">

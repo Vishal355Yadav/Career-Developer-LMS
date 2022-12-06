@@ -1,4 +1,8 @@
+import  {useEffect} from 'react';
 function Register(){
+    useEffect(()=>{
+        document.title='User Register';
+    });
     return(
         <div className="container mt-4 ">
         <div className="row">

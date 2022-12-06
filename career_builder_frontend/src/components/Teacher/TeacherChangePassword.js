@@ -1,6 +1,11 @@
 // import {Link} from 'react-router-dom';
+import  {useEffect} from 'react';
+
 import TeacherSidebar from './TeacherSidebar';
 function TeacherChangePassword(){
+    useEffect(()=>{
+        document.title='Change Password';
+    });
     return(
         <div className="container mt-4 ">
             <div className="row">

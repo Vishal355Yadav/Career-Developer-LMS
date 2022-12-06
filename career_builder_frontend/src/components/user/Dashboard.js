@@ -1,8 +1,12 @@
 // import {Link} from 'react-router-dom';
 // import Mycourses from './Mycourses';
+import  {useEffect} from 'react';
 import Sidebar from './Sidebar';
 // import {Routes as Switch, Route} from 'react-router-dom';
 function Dashboard(){
+    useEffect(()=>{
+        document.title='Dashboard';
+    });
     return(
         <div className="container mt-4 ">
             <div className="row">

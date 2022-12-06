@@ -1,6 +1,10 @@
 // import {Link} from 'react-router-dom';
+import  {useEffect} from 'react';
 import TeacherSidebar from './TeacherSidebar';
 function TeacherProfileSetting(){
+   useEffect(()=>{
+      document.title='Profile Setting';
+  });
     return(
         <div className="container mt-4 ">
             <div className="row">
