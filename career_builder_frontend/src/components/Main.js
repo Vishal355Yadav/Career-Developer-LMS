@@ -6,6 +6,7 @@ import Login from './user/Login';
 import Dashboard from './user/Dashboard';
 import Register from './user/Register';
 import TeacherDetail from './TeacherDetail'
+import AllCourses from './AllCourses';
 // teacher 
 import TeacherLogin from './Teacher/TeacherLogin';
 import TeacherDashboard from './Teacher/TeacherDashboard';
@@ -24,6 +25,8 @@ import Mycourses from './user/Mycourses';
 import CourseDetail  from './Coursedetail';
 import {Routes, Route} from 'react-router-dom';
 // import Mycourses from './user/Mycourses';
+import PopularCourses from './PopularCourses';
+import PopularTeacher from './PopularTeacher';
 
 function Main() {
     return (
@@ -52,6 +55,9 @@ function Main() {
           <Route path='/my-users' element ={<MyUsers/>}/>
           <Route path='/teacher-detail/:teacher_id' element ={<TeacherDetail/>}/>
           
+          <Route path='/all-courses' element ={<AllCourses/>}/>
+          <Route path='/popular-courses' element={<PopularCourses/>}/> 
+          <Route path='/popular-teachers' element={<PopularTeacher/>}/> 
 </Routes>
         <Footer/>
       </div> 
