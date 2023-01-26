@@ -7,14 +7,14 @@ class Teacher(models.Model):
 	password=models.CharField(max_length=100)
 	qualification=models.CharField(max_length=100)
 	mobile_no=models.CharField(max_length=100)
-	address=models.TextField()
+	skills= models.TextField()
 
 	class Meta:
 		verbose_name_plural="1. Teachers"
 
 class CourseCategory(models.Model):
 	title=models.CharField(max_length=100)
-	description=models.TextField()\
+	description=models.TextField()
 
 	class Meta:
 		verbose_name_plural="2. Course Categories"
@@ -24,6 +24,7 @@ class Course(models.Model):
 	teacher=models.ForeignKey(Teacher, on_delete=models.CASCADE)
 	title=models.CharField(max_length=100)
 	description=models.TextField()
+	techs=models.TextField(null=True)
 
 	class Meta:
 		verbose_name_plural="3. Courses"
@@ -32,7 +33,7 @@ class Course(models.Model):
 		related_videos=Course.objects.filter(techs_icontains=self.techs).exclude(id=self.id)
 		return serializers.serialize('json', related_videos)
 	def tech_list(self):
-		tech_list=self.techs.split(',')
+		tech_list=self.techs
 		return tech_list
 
 class Student(models.Model):
@@ -90,22 +91,22 @@ class Chapter (models.Model):
 	class Meta:
 		verbose_name_plural="8. Chapters"
 
-def chapter_duration( self):
-	seconds=0
-	import cv2
-	cap = cv2. VideoCapture(self.video.path)
-	fps = cap.get (cv2.CAP_PROP_FPS)
-# OpenCV2 version 2 used "CV CAP PROP FPS"
-	frame_count = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
-	if frame_count:
-		duration = frame_count/fps
-		print('fps =' + str(fps))
-		print ('number of frames ='+ str(frame_count))
-		print ('duration (S) ='+ str(duration))
-		minutes = int (duration/60)
-		seconds = duration%60
-		print('duration (M:S) =' +str(minutes) + ':' + str(seconds))
-		return seconds
+	def chapter_duration( self):
+		seconds=0
+		import cv2
+		cap = cv2. VideoCapture(self.video.path)
+		fps = cap.get (cv2.CAP_PROP_FPS)
+	# OpenCV2 version 2 used "CV CAP PROP FPS"
+		frame_count = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
+		if frame_count:
+			duration = frame_count/fps
+			print('fps =' + str(fps))
+			print ('number of frames ='+ str(frame_count))
+			print ('duration (S) ='+ str(duration))
+			minutes = int (duration/60)
+			seconds = duration%60
+			print('duration (M:S) =' +str(minutes) + ':' + str(seconds))
+			return seconds
 
 class StudentCourseEnrollment(models.Model):
 	course=models.ForeignKey(Course, on_delete=models.CASCADE,related_name='enrolled_courses')

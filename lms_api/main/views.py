@@ -13,6 +13,7 @@ from .serializers import TeacherSerializer,FlatPagesSerializer,ContactSerializer
 
 from . import models
 
+
 class TeacherList(generics.ListCreateAPIView):
 	queryset=models.Teacher.objects.all()
 	serializer_class = TeacherSerializer
@@ -22,6 +23,18 @@ class TeacherDetail(generics.RetrieveUpdateDestroyAPIView):
 	queryset=models.Teacher.objects.all()
 	serializer_class = TeacherSerializer
 	permissions_classes=[permissions.IsAuthenticated]
+
+@csrf_exempt
+def teacher_login(request):
+    email=request.POST['email']
+    password=request.POST['password']
+
+    teacherData=models.Teacher.objects.get(email=email,password=password)
+    if teacherData:
+        return JsonResponse({'bool':True})
+
+    else:
+        return JsonResponse({'bool':False})
 
 class FlatPagesList(generics.ListCreateAPIView):
 	queryset=FlatPage.objects.all()
@@ -80,6 +93,7 @@ class TeacherCourseDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class=CourseSerializer
     
 class CourseChapterList(generics.ListCreateAPIView):
+    queryset=models.Chapter.objects.all()
     serializer_class = ChapterSerializer
 
     def get_queryset(self):
@@ -90,17 +104,22 @@ class CourseChapterList(generics.ListCreateAPIView):
 class ChapterDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset=models.Chapter.objects.all()
     serializer_class=ChapterSerializer
-    def get_serializer_context( self):
-        context=super ().get_serializer_context()
-        context['chapter_duration']=self.chapter_duration
-        print ('context------------------------')
-        print (context)
-        return context
 
 class StudentList(generics.ListCreateAPIView):
     queryset=models.Student.objects.all()
     serializer_class=StudentSerializer
 # permission classes=[permissions.IsAuthenticated]
+
+def student_login(request):
+    email=request.POST['email']
+    password=request.POST['password']
+
+    studentData=models.Student.objects.get(email=email,password=password)
+    if studentData:
+        return JsonResponse({'bool':True})
+
+    else:
+        return JsonResponse({'bool':False})
 
 class StudentEnrollCourseList(generics.ListCreateAPIView):
     queryset=models.StudentCourseEnrollment.objects.all()

@@ -27,6 +27,7 @@ urlpatterns = [
     path('fetch-enroll-status/<int:student_id>/<int:course_id>', views.fetch_enroll_status),
     path('fetch-enrolled-students/<int:course_id>',views. EnrolledStudentList.as_view() ),
     path ('course-rating/', views. CourseRatingList.as_view()),
+    path('fetch-rating-status/<int:student_id>/<int:course_id>', views.fetch_rating_status),
 
 
 

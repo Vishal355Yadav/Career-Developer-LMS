@@ -18,8 +18,8 @@ function TeacherDetail(){
                     essentially have to run through each number in the array twice — it would have to runs the numbers by 3 first and
                     then run it by 5.
                 </p>
-                <p><strong>Skills : </strong><Link to="/teacher-detail/1"><strong>Data Structures,</strong></Link> <Link to="/teacher-detail/1"><strong>C++,</strong></Link> <Link to="/teacher-detail/1"><strong>Python</strong></Link></p>
-                <p><strong>Recents: React Js Course</strong></p>
+                <p><strong>Skills : </strong><Link to="/category/php"><strong>PHP,</strong></Link> <Link to="/category/php"><strong>Python,</strong></Link><Link to="/category/php"><strong>JavaScipt</strong></Link></p>
+                <p><strong>Recents: <Link to="/category/php"><strong>React JS Course</strong></Link></strong></p>
                 <p><strong>Rating : 4.5/5</strong></p>
             </div>
         </div>

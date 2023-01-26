@@ -27,6 +27,7 @@ import {Routes, Route} from 'react-router-dom';
 // import Mycourses from './user/Mycourses';
 import PopularCourses from './PopularCourses';
 import PopularTeacher from './PopularTeacher';
+import CategoryCourses from './CetegoryCourses';
 
 function Main() {
     return (
@@ -58,6 +59,7 @@ function Main() {
           <Route path='/all-courses' element ={<AllCourses/>}/>
           <Route path='/popular-courses' element={<PopularCourses/>}/> 
           <Route path='/popular-teachers' element={<PopularTeacher/>}/> 
+          <Route path='/category/:category_slug' element={<CategoryCourses/>}/>
 </Routes>
         <Footer/>
       </div> 

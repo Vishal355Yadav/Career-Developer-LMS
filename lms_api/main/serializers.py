@@ -5,7 +5,7 @@ from django.contrib.flatpages.models import FlatPage
 class TeacherSerializer(serializers.ModelSerializer):
 	class Meta:
 		model=models.Teacher
-		fields=['id','full_name','email','password','qualification','mobile_no','address'] 
+		fields=['id','full_name','email','password','qualification','mobile_no','skills'] 
 		depth=1
 
 class FlatPagesSerializer(serializers.ModelSerializer):
@@ -31,7 +31,7 @@ class CategorySerializer(serializers.ModelSerializer):
 class CourseSerializer(serializers.ModelSerializer):
 	class Meta:
 		model=models.Course
-		fields= ['id', 'category', 'teacher','title','description', 'related_videos', 'tech_list']
+		fields= ['id', 'category', 'teacher','title','description','techs','tech_list']
 		depth=1
 
 class ChapterSerializer(serializers.ModelSerializer):
@@ -42,7 +42,7 @@ class ChapterSerializer(serializers.ModelSerializer):
 class StudentSerializer(serializers.ModelSerializer):
 	class Meta:
 		model=models.Student
-		fields=['id', 'full_name', 'email', 'password','username','interested_categories']
+		fields=['id', 'full_name', 'email', 'password','qualification','mobile_no','address','interested_categories']
 
 class StudentCourseEnrollSerializer(serializers.ModelSerializer):
     class Meta:
@@ -58,8 +58,8 @@ class StudentCourseEnrollSerializer(serializers.ModelSerializer):
 class CourseRatingSerializer(serializers.ModelSerializer):
     class Meta:
         model=models.CourseRating
-        fields=['id', 'course','student', 'rating', 'reviews', 'review time']
-    def __init__(self, *allgs,** kwargs):
+        fields=['id', 'course','student', 'rating', 'reviews', 'review_time']
+    def __init__(self, *args,** kwargs):
         super (CourseRatingSerializer, self).__init__(*args,**kwargs)
         request = self.context.get ('request')
         self.Meta.depth = 0

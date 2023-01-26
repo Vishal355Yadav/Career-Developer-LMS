@@ -14,9 +14,9 @@ function TeacherRegister(){
         'skills': '',
         'status': ''
     });
-    const handleChange=(event)=>{
+    const handleChange=(event)=>{ 
         setteacherData({
-            ...teacherData,
+            ...teacherData, //spread operator
             [event.target.name]:event.target.value
         });
     }
@@ -54,12 +54,12 @@ function TeacherRegister(){
         <div className="container mt-4 ">
         <div className="row">
             <div className="col-6 offset-3">
-                {teacherData.status==='success' && <p className='text-success'>Thanks for you registration</p>}
-                {teacherData.status==='error' && <p className='text-danger'>Something wrong happened!!</p>}
+                {teacherData.status==='success' && <p className="text-success">Thanks for you registration</p>}
+                {teacherData.status==='error' && <p className="text-danger">Something wrong happened!!</p>}
                 <div className="card">
                     <h5 className="card-header">Teacher Register</h5>
                     <div className="card-body">
-                    <form>
+                    {/* <form> */}
                         <div className="mb-3">
                             <label for="exampleInputFullname" className="form-label">Full Name</label>
                             <input onChange={handleChange} type="text" name="full_name" value={teacherData.full_name} className="form-control" id="exampleInputname" aria-describedby="nameHelp"/>
@@ -85,7 +85,7 @@ function TeacherRegister(){
                         </div>
                         <div className="mb-3">
                             <label for="exampleInputFullname" className="form-label">Mobile No.</label>
-                            <input  onChange={handleChange} type="text" name="mobile_no"  value={teacherData.mobile_no}  className="form-control" id="exampleInputmobile" aria-describedby="nameHelp"/>
+                            <input  onChange={handleChange} type="number" name="mobile_no"  value={teacherData.mobile_no}  className="form-control" id="exampleInputmobile" aria-describedby="nameHelp"/>
                             <div id="nameHelp" className="form-text"></div>
                         </div>
                         <div className="mb-3">
@@ -93,8 +93,8 @@ function TeacherRegister(){
                            <textarea  onChange={handleChange} name="skills" value={teacherData.skills}  className="form-control"></textarea>
                             <div id="nameHelp" className="form-text"> Php, python,javascipt etc</div>
                         </div>
-                        <button  onClick={submitForm} type="submit" className="btn btn-primary">Register</button>
-                        </form>
+                        { <button  onClick={submitForm} type="submit" className="btn btn-primary">Register</button> }
+                        {/* </form> */}
                     </div>
 
                 </div>
@@ -102,6 +102,5 @@ function TeacherRegister(){
             </div>
         </div>
     );
-
 }
 export default TeacherRegister;
