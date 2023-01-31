@@ -26,7 +26,8 @@ function TeacherMycourses(){
                 <tbody>
                     <td>Php Development</td>
                     <td><Link to='/'>65</Link></td>
-                    <td><button className='btn btn-primary active'>Unenroll</button></td>
+                    <td><button className='btn btn-danger btn-primary active ms-2'>Delete</button></td>
+                    <Link className='btn btn-primary active ms-2'to='/add-chapter/2'>Add Chapters</Link>
                 </tbody>
             </table>
         </div>

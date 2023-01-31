@@ -29,7 +29,7 @@ function TeacherAddCourse(){
                         </div>
                        </div>
                         <div className="mb-3 row">
-                        <label for="Course_video" className="col-sm-2 col-form-label">Course Video</label>
+                        <label for="Course_video" className="col-sm-2 col-form-label">Course Image</label>
                         <div className="col-sm-10">
                            <input type="file" className="form-control" id="course_video"/>
                         </div>
@@ -37,7 +37,7 @@ function TeacherAddCourse(){
                        <div className="mb-3 row">
                         <label for="technology" className="col-sm-2 col-form-label">Technologies</label>
                         <div className="col-sm-10">
-                        <textarea className="form-control" id="technology"></textarea>
+                        <textarea className="form-control" placeholder='Php,Python,Js,HTML,CSS' id="technology"></textarea>
                         </div>
                        </div>
                     
