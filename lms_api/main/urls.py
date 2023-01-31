@@ -3,6 +3,8 @@ from . import views
 
 urlpatterns = [
     path('teacher/', views.TeacherList.as_view()),
+    # path('teacher/<int:int>/', views.TeacherDeatail.as_view()),
+    path('teacher-login', views.teacher_login),
     path('pages/', views.FlatPagesList.as_view()),
     path('pages/<int:pk>/<str:page_slug>/', views.FlatPagesDetail.as_view()),
     path('contact/', views.ContactList.as_view()),

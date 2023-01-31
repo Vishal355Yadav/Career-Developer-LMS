@@ -28,6 +28,7 @@ import {Routes, Route} from 'react-router-dom';
 import PopularCourses from './PopularCourses';
 import PopularTeacher from './PopularTeacher';
 import CategoryCourses from './CetegoryCourses';
+import TeacherLogout from './Teacher/TeacherLogout';
 
 function Main() {
     return (
@@ -47,6 +48,7 @@ function Main() {
           <Route path='/change-password' element ={<ChangePassword/>}/>
           
           <Route path='/teacher-login' element ={<TeacherLogin/>}/>
+          <Route path='/teacher-logout' element ={<TeacherLogout/>}/>
           <Route path='/teacher-register' element ={<TeacherRegister/>}/>
           <Route path='/teacher-dashboard' element ={<TeacherDashboard/>}/>
           <Route path='/add-course' element ={<TeacherAddCourse/>}/>
