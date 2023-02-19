@@ -1,10 +1,25 @@
 import {Link} from 'react-router-dom';
 import TeacherSidebar from './TeacherSidebar';
-import  {useEffect} from 'react';
+import  {useEffect,useState} from 'react';
+import axios from 'axios';
+const baseUrl='http://127.0.0.1:8000/api';
 function TeacherMycourses(){
+    const [courseData,setCourseData]=useState([]);
+    const teacherId=localStorage.getItem('teacherId');
+    // console.log(teacherId);
     useEffect(()=>{
         document.title='My Courses';
-    });
+        try{
+            axios.get(baseUrl+'/teacher-courses/'+teacherId)
+            .then((res)=>{ 
+                setCourseData(res.data);
+            });
+        }catch(error){ 
+            console.log(error);
+        } 
+    },[]);
+    // console.log(courseData);
+    // console.log("this is me");
     return(
         <div className="container mt-4 ">
             <div className="row">
@@ -19,15 +34,21 @@ function TeacherMycourses(){
                 <thead>
                     <tr>
                         <th>Name</th>
+                        <th>Image</th>
                         <th>Total Enrolled</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <td>Php Development</td>
+                    {courseData.map((course,index)=>
+                    <tr>
+                    <td><Link to={'/all-chapters/'+course.id}>{course.title}</Link></td>
+                    <td><img src={course.featured_img} width="80" className='rounded' alt={course.title}></img></td>
                     <td><Link to='/'>65</Link></td>
-                    <td><button className='btn btn-danger btn-primary active ms-2'>Delete</button></td>
-                    <Link className='btn btn-primary active ms-2'to='/add-chapter/2'>Add Chapters</Link>
+                    <td><button className='btn btn-danger btn-sm'>Delete</button></td>
+                    <Link className='btn btn-success active btn-sm' to={'/add-chapter/'+course.id}>Add Chapters</Link>
+                  </tr>
+                    )} 
                 </tbody>
             </table>
         </div>

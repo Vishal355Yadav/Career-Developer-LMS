@@ -31,16 +31,16 @@ class CategorySerializer(serializers.ModelSerializer):
 class CourseSerializer(serializers.ModelSerializer):
 	class Meta:
 		model=models.Course
-		fields= ['id', 'category', 'teacher','title','description','techs','tech_list']
-		depth=1
+		fields= ['id', 'category', 'teacher','title','description','featured_img','techs']
+		# depth=1
 
 class ChapterSerializer(serializers.ModelSerializer):
 	class Meta:
 		model=models.Chapter
-		fields= ['id','course','title','description', 'video', 'chapter_duration', 'remarks']
+		fields= ['id','course','title','description', 'video','remarks']
 
 class StudentSerializer(serializers.ModelSerializer):
-	class Meta:
+	class Meta: 
 		model=models.Student
 		fields=['id', 'full_name', 'email', 'password','qualification','mobile_no','address','interested_categories']
 

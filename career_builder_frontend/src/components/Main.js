@@ -16,7 +16,7 @@ import TeacherChangePassword from './Teacher/TeacherChangePassword';
 import TeacherMycourses from './Teacher/TeacherMycourses';
 import TeacherProfileSetting from './Teacher/TeacherProfileSetting';
 import MyUsers from './Teacher/MyUsers';
-
+import AllChapters from './Teacher/TeacherCourseChapters';
 import FavoriteCourses from './user/FavoriteCourses';
 import RecommendedCourses from './user/RecommendedCourses';
 import ProfileSetting from './user/ProfileSetting';
@@ -61,6 +61,7 @@ function Main() {
           <Route path='/teacher-detail/:teacher_id' element ={<TeacherDetail/>}/>
           
           <Route path='/all-courses' element ={<AllCourses/>}/>
+          <Route path='/all-chapters/:course_id' element ={<AllChapters/>}/>
           <Route path='/popular-courses' element={<PopularCourses/>}/> 
           <Route path='/popular-teachers' element={<PopularTeacher/>}/> 
           <Route path='/category/:category_slug' element={<CategoryCourses/>}/>
