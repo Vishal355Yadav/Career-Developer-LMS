@@ -10,7 +10,7 @@ function TeacherAddChapter(){
     const[chapterData,setChapterData]=useState({
         title:'',
         description:'', 
-        video:'',
+         video:'',
         remarks:''
     });
   

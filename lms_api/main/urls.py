@@ -3,7 +3,7 @@ from . import views
 
 urlpatterns = [
     path('teacher/', views.TeacherList.as_view()),
-    # path('teacher/<int:int>/', views.TeacherDeatail.as_view()),
+    path('teacher/<int:pk>/', views.TeacherDetail.as_view()),
     path('teacher-login', views.teacher_login),
     path('pages/', views.FlatPagesList.as_view()),
     path('pages/<int:pk>/<str:page_slug>/', views.FlatPagesDetail.as_view()),
@@ -13,14 +13,15 @@ urlpatterns = [
     # Course
     path('course/',views.CourseList.as_view()),
     # Course Detail
-    # path('course/<int:pk>/', views.CourseDetailView.as_view()),
+    path('course/<int:pk>/', views.CourseDetailView.as_view()),
     # Specific Course Chapter
-    path('chapter/',views.ChapterList.as_view()),
+    # path('chapter/',views.ChapterList.as_view()),
+    path('chapter/<int:pk>',views.ChapterDetailView.as_view()),
     # Specific Chapter
     path ('course-chapters/<int:course_id>', views.CourseChapterList.as_view()),
     # Teacher Courses
     path('teacher-courses/<int:teacher_id>', views.TeacherCourseList.as_view()),
-    # Course Detail 
+    # Course Detail  
     path( 'teacher-course-detail/<int:pk>', views.TeacherCourseDetail.as_view()),
     # Student
     path('student/', views. StudentList.as_view()),

@@ -86,7 +86,7 @@ class FAQ(models.Model):
 		verbose_name_plural="7. Faq"
 
 class Chapter (models.Model):
-	course=models.ForeignKey(Course,on_delete=models.CASCADE)
+	course=models.ForeignKey(Course,on_delete=models.CASCADE,related_name='course_chapters')
 	title=models.CharField(max_length=150)
 	description=models. TextField()
 	video=models.FileField(upload_to='chapter_videos/', null=True)

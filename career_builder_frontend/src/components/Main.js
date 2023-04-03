@@ -12,11 +12,13 @@ import TeacherLogin from './Teacher/TeacherLogin';
 import TeacherDashboard from './Teacher/TeacherDashboard';
 import TeacherRegister from './Teacher/TeacherRegister';
 import TeacherAddCourse from './Teacher/TeacherAddCourse';
+import EditCourse from './Teacher/EditCourse';
 import TeacherChangePassword from './Teacher/TeacherChangePassword';
 import TeacherMycourses from './Teacher/TeacherMycourses';
 import TeacherProfileSetting from './Teacher/TeacherProfileSetting';
 import MyUsers from './Teacher/MyUsers';
 import AllChapters from './Teacher/TeacherCourseChapters';
+import EditChapter from './Teacher/EditChapter';
 import FavoriteCourses from './user/FavoriteCourses';
 import RecommendedCourses from './user/RecommendedCourses';
 import ProfileSetting from './user/ProfileSetting';
@@ -30,6 +32,7 @@ import PopularTeacher from './PopularTeacher';
 import CategoryCourses from './CetegoryCourses';
 import TeacherLogout from './Teacher/TeacherLogout';
 import TeacherAddChapter from './Teacher/TeacherAddChapter';
+// import EditChapter from './Teacher/EditChapter';
 
 function Main() {
     return (
@@ -53,6 +56,7 @@ function Main() {
           <Route path='/teacher-register' element ={<TeacherRegister/>}/>
           <Route path='/teacher-dashboard' element ={<TeacherDashboard/>}/>
           <Route path='/add-course' element ={<TeacherAddCourse/>}/>
+          <Route path='/edit-course/:course_id' element ={<EditCourse/>}/>
           <Route path='/add-chapter/:course_id' element ={<TeacherAddChapter/>}/>
           <Route path='/teacher-courses' element ={<TeacherMycourses/>}/>
           <Route path='/teacher-change-password' element ={<TeacherChangePassword/>}/>
@@ -62,6 +66,7 @@ function Main() {
           
           <Route path='/all-courses' element ={<AllCourses/>}/>
           <Route path='/all-chapters/:course_id' element ={<AllChapters/>}/>
+          <Route path='/edit-chapter/:chapter_id' element ={<EditChapter/>}/>
           <Route path='/popular-courses' element={<PopularCourses/>}/> 
           <Route path='/popular-teachers' element={<PopularTeacher/>}/> 
           <Route path='/category/:category_slug' element={<CategoryCourses/>}/>
