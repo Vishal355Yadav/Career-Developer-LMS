@@ -8,17 +8,18 @@ function CourseDetail(){
   const [courseData,setcourseData]=useState([]);
   const [chapterData,setchapterData]=useState([]);
   const [teacherData,setteacherData]=useState([]);
-  const [relatedcourseData,setrealatecourseData]=useState([]);
-  let {course_id}=useParams();
+  // const [relatedcourseData,setrealatecourseData]=useState([]);
+  let {course_id}=useParams(); 
+  // console.log({course_id} + "hello");
   useEffect(()=>{
     try{
       axios.get(baseUrl+'/course/'+course_id)
       .then((res)=>{
-        console.log(res);
+        // console.log(res);
         setcourseData(res.data);
         setchapterData(res.data.course_chapters);
         setteacherData(res.data.teacher);
-        setrealatecourseData(JSON.parse(res.data.related_videos));
+        // setrealatecourseData(JSON.parse(res.data.related_videos));
       });
     }
     catch(error){
@@ -26,22 +27,19 @@ function CourseDetail(){
     }
     document.title='Course Detail';
 },[]);
-  console.log(relatedcourseData);
+
+  // console.log(relatedcourseData);
     return(
          <div className="container mt-4 ">
             <div className="row">
                 <div className="col-4">
-                <img src="/logo512.png" className="img-thumbnail" alt="Course Image"/>
+                <img src={courseData.featured_img} className="img-thumbnail" alt={courseData.title}/>
                 </div>
                 <div className='col-8'>
-                    <h3>Course Tittle</h3>
-                    <p> Wait...it's not over though! The whole purpose of the algorithm is to customize the runtime correctly. Imagine if the
-                        range increases from 1-15 to 1-100. The compiler will check each number to determine whether it is divisible by 3
-                        or 5. It would then run through the numbers again to check if the numbers are divisible by 3 and 5. The code would
-                        essentially have to run through each number in the array twice — it would have to runs the numbers by 3 first and
-                        then run it by 5.
+                    <h3>{courseData.title}</h3>
+                    <p> {courseData.description}
                     </p>
-                    <p>Author : <Link to="/teacher-detail/1"><strong>Love Babbar</strong></Link></p>
+                    <p>Author : <Link to="/teacher-detail/1"><strong>{teacherData.full_name}</strong></Link></p>
                     <p><strong>Duration :3 Hours 30 Minutes</strong></p>
                     <p><strong>Total Enrolled: 355 Students</strong></p>
                     <p><strong>Rating : 4.5/5</strong></p>
@@ -49,15 +47,15 @@ function CourseDetail(){
             </div>
             <div className="cards mt-5">
                <div className="card-header">
-                <h5>In this Course</h5>
+                <h5> Course Videos</h5> 
                </div>
                <ul className="list-group list-group-flush">
-               {chapterData.map((chapter,index)=>
+                  {chapterData.map((chapter,index)=>
                  <li className="list-group-item" key={chapter.id}>{chapter.title}
                     <span className='float-end'>
                         <span className='me-5'>1 Hour 30 Minute</span>
                         <button className="btn-btn-sn btn-secondary float-end" data-bs-toggle="modal" data-bs-target="#videoModal1">
-                           <i className="bi bi-play"></i>
+                           <i className="bi-youtube"></i>
                         </button> 
                     </span>
                     {/* video play modal */}
@@ -70,7 +68,7 @@ function CourseDetail(){
                             </div>
                             <div className="modal-body">
                             <div class="ratio ratio-16x9">
-                              <iframe src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" title="YouTube video" allowfullscreen></iframe>
+                              <iframe src={chapter.video} title={chapter.title} allowfullscreen></iframe>
                             </div>
                             </div>
                           </div>
@@ -79,39 +77,7 @@ function CourseDetail(){
                  </li>)}
 
                  {/* video play above */}
-                 {/* <li className="list-group-item">Introduction 
-                    <span className='float-end'>
-                        <span className='me-5'>1 Hour 30 Minute</span>
-                        <button className="btn-btn-sn btn-secondary float-end">
-                           <i className="bi bi-play"></i>
-                        </button> 
-                    </span> 
-                 </li>
-                 <li className="list-group-item">Introduction 
-                    <span className='float-end'>
-                        <span className='me-5'>1 Hour 30 Minute</span>
-                        <button className="btn-btn-sn btn-secondary float-end">
-                           <i className="bi bi-play"></i>
-                        </button> 
-                    </span> 
-                 </li>
-                 <li className="list-group-item">Introduction 
-                    <span className='float-end'>
-                        <span className='me-5'>1 Hour 30 Minute</span>
-                        <button className="btn-btn-sn btn-secondary float-end">
-                           <i className="bi bi-play"></i>
-                        </button> 
-                    </span> 
-                 </li>
-                 <li className="list-group-item">Introduction 
-                    <span className='float-end'>
-                        <span className='me-5'>1 Hour 30 Minute</span>
-                        <button className="btn-btn-sn btn-secondary float-end">
-                           <i className="bi bi-play"></i>
-                        </button> 
-                    </span> 
-                 </li>
-                  */}
+                 
                  
                  
                  </ul>
