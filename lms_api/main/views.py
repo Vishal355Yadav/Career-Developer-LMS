@@ -64,17 +64,17 @@ class CourseList(generics.ListCreateAPIView):
     serializer_class = CourseSerializer
     def get_queryset(self):
         qs=super() .get_queryset()
-        if  'result'  in self. request.GET:
-            limit=int(self.request.GET[ 'result' ])
-            qs=models.Course.objects.all().order_by('-id') [:limit]
-        if 'category' in self.request.GET:
-            category=self.request.GET['category']
-            qs=models.Course.objects.filter(techs_icontains=category)
-        if  'skill_name' in self. request.GET and 'teacher' in self.request.GET:
-            skill_name=self. request.GET[ 'skill_name' ]
-            teacher=self.request.GET['teacher']
-            teacher=models.Teacher.obiects.filter(id=teacher).first()
-            qs=models.Course.objects.filter(techs_icontains=skill_name, teacher=teacher)
+    #     if  'result'  in self. request.GET:
+    #         limit=int(self.request.GET[ 'result' ])
+    #         qs=models.Course.objects.all().order_by('-id') [:limit]
+    # #     if 'category' in self.request.GET:
+    # #         category=self.request.GET['category']
+    # #         qs=models.Course.objects.filter(techs_icontains=category)
+    # #     if  'skill_name' in self. request.GET and 'teacher' in self.request.GET:
+    #         skill_name=self. request.GET[ 'skill_name' ]
+    #         teacher=self.request.GET['teacher']
+    #         teacher=models.Teacher.obiects.filter(id=teacher).first()
+    #         qs=models.Course.objects.filter(techs_icontains=skill_name, teacher=teacher)
 
         return qs
         

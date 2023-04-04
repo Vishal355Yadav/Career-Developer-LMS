@@ -35,12 +35,12 @@ class Course(models.Model):
 	class Meta:
 		verbose_name_plural="3. Courses"
 
-	def related_videos (self):
-		related_videos=Course.objects.filter(techs_icontains=self.techs).exclude(id=self.id)
-		return serializers.serialize('json', related_videos)
-	def tech_list(self):
-		tech_list=self.techs
-		return tech_list
+	# def related_videos (self):
+	# 	related_videos=Course.objects.filter(techs_icontains=self.techs).exclude(id=self.id)
+	# 	return serializers.serialize('json', related_videos)
+	# def tech_list(self):
+	# 	tech_list=self.techs
+	# 	return tech_list
 
 class Student(models.Model):
 	full_name=models.CharField(max_length=100)
