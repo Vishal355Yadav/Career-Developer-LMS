@@ -33,21 +33,13 @@ function CourseDetail(){
          <div className="container mt-4 ">
             <div className="row">
                 <div className="col-4">
-<<<<<<< HEAD
-                <img src={courseData.featured_img} className="img-thumbnail" alt="Course Image"/>
-                </div>
-                <div className='col-8'>
-                    <h3>{courseData.title}</h3>
-                    <p> {courseData.description}</p>
-=======
                 <img src={courseData.featured_img} className="img-thumbnail" alt={courseData.title}/>
                 </div>
                 <div className='col-8'>
                     <h3>{courseData.title}</h3>
                     <p> {courseData.description}
                     </p>
->>>>>>> a05422f7bf8d2ba104ecfc557954e661ab5b3305
-                    <p>Author : <Link to="/teacher-detail/1"><strong>{teacherData.full_name}</strong></Link></p>
+                    <p>Author : <Link to={`/teacher-detail/${teacherData.id}`}><strong>{teacherData.full_name}</strong></Link></p>
                     <p><strong>Duration :3 Hours 30 Minutes</strong></p>
                     <p><strong>Total Enrolled: 355 Students</strong></p>
                     <p><strong>Rating : 4.5/5</strong></p>
@@ -83,16 +75,7 @@ function CourseDetail(){
                         </div>
                       </div> 
                  </li>)}
-<<<<<<< HEAD
                </ul>
-=======
-
-                 {/* video play above */}
-                 
-                 
-                 
-                 </ul>
->>>>>>> a05422f7bf8d2ba104ecfc557954e661ab5b3305
               
             </div>
             <h3 className="pb-1 mb-5">Related Courses</h3>
