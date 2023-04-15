@@ -8,7 +8,6 @@ function TeacherDetail(){
     const [courseData,setcourseData]=useState([]);
     const [teacherData,setteacherData]=useState([]);
     let {teacher_id}=useParams(); 
-    
     useEffect(()=>{
         try{
           axios.get(baseUrl+'/teacher/'+teacher_id)
@@ -24,7 +23,6 @@ function TeacherDetail(){
         }
         document.title='Teacher Detail';
     },[]);
-
     return (
         <div className="container mt-4 ">
         <div className="row">
@@ -46,7 +44,7 @@ function TeacherDetail(){
            <div className="list-group list-group-flush">
             {courseData.map((course,index)=>
                 <Link to ={`/detail/${course.id}`} className='list-group-item list-group-item-action'>{course.title}</Link>
-            )}             
+            )}
             </div>
           
         </div>

@@ -55,7 +55,7 @@ function Main() {
           <Route path='/teacher-logout' element ={<TeacherLogout/>}/>
           <Route path='/teacher-register' element ={<TeacherRegister/>}/>
           <Route path='/teacher-dashboard' element ={<TeacherDashboard/>}/>
-          <Route path='/add-course' element ={<TeacherAddCourse/>}/>
+             <Route path='/add-course' element ={<TeacherAddCourse/>}/>
           <Route path='/edit-course/:course_id' element ={<EditCourse/>}/>
           <Route path='/add-chapter/:course_id' element ={<TeacherAddChapter/>}/>
           <Route path='/teacher-courses' element ={<TeacherMycourses/>}/>
