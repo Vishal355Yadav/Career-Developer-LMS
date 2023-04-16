@@ -43,7 +43,7 @@ function CourseDetail(){
                     </p>
                     <p>Author : <Link to={`/teacher-detail/${teacherData.id}`}><strong>{teacherData.full_name}</strong></Link></p>
                     <p>Techs :<strong>{techListData.map((tech,index)=>
-                      <Link to ={`/category/${ tech.trim()}`} className='badge badge-pill text-dark bg-warning mr-2'>{tech}</Link> 
+                      <Link to ={`/category/${ tech.trim()}`} className='badge badge-pill text-dark bg-warning mr-2'>{tech.trim()}</Link> 
                     )}</strong></p>
                     <p><strong>Duration :3 Hours 30 Minutes</strong></p>
                     <p><strong>Total Enrolled: 355 Students</strong></p>

@@ -5,7 +5,7 @@ from django.contrib.flatpages.models import FlatPage
 class TeacherSerializer(serializers.ModelSerializer):
 	class Meta:
 		model=models.Teacher
-		fields=['id','full_name','detail','email','password','qualification','mobile_no','skills','teacher_courses'] 
+		fields=['id','full_name','detail','email','password','qualification','mobile_no','skills','teacher_courses','skill_list'] 
 		depth=1
 
 class FlatPagesSerializer(serializers.ModelSerializer):
@@ -42,7 +42,7 @@ class ChapterSerializer(serializers.ModelSerializer):
 class StudentSerializer(serializers.ModelSerializer):
 	class Meta: 
 		model=models.Student
-		fields=['id', 'full_name', 'email', 'password','qualification','mobile_no','address','interested_categories']
+		fields=['id', 'full_name', 'email', 'password','username','interested_categories']
 
 class StudentCourseEnrollSerializer(serializers.ModelSerializer):
     class Meta:
