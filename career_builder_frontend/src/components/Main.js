@@ -5,10 +5,12 @@ import About from './About';
 import Login from './user/Login';
 import Dashboard from './user/Dashboard';
 import Register from './user/Register';
-import TeacherDetail from './TeacherDetail'
 import AllCourses from './AllCourses';
+import Logout from './user/StudentLogout';
 // teacher 
+import TeacherDetail from './TeacherDetail'
 import TeacherLogin from './Teacher/TeacherLogin';
+import TeacherLogout from './Teacher/TeacherLogout';
 import TeacherDashboard from './Teacher/TeacherDashboard';
 import TeacherRegister from './Teacher/TeacherRegister';
 import TeacherAddCourse from './Teacher/TeacherAddCourse';
@@ -31,7 +33,6 @@ import PopularCourses from './PopularCourses';
 import PopularTeacher from './PopularTeacher';
 import CategoryCourses from './CetegoryCourses';
 import TeacherSkillCourses from './TeacherSkillCourses';
-import TeacherLogout from './Teacher/TeacherLogout';
 import TeacherAddChapter from './Teacher/TeacherAddChapter';
 // import EditChapter from './Teacher/EditChapter';
 
@@ -43,7 +44,8 @@ function Main() {
           <Route path='/' element={<Home/>}/>
           <Route path='/about' element={<About/>}/>
           <Route path='/CourseDetail/:course_id' element={<CourseDetail/>}/>
-          <Route path='/user-login' element ={<Login/>}/>
+          <Route path='/user-login' element ={<Login/>}/>          
+          <Route path='/logout' element ={<Logout/>}/>
           <Route path='/user-register' element ={<Register/>}/>
           <Route path='/user-dashboard' element ={<Dashboard/>}/>
           <Route path='/my-courses' element ={<Mycourses/>}/>

@@ -117,13 +117,18 @@ class StudentList(generics.ListCreateAPIView):
     serializer_class=StudentSerializer
 # permission classes=[permissions.IsAuthenticated]
 
+@csrf_exempt
 def student_login(request):
     email=request.POST['email']
     password=request.POST['password']
 
-    studentData=models.Student.objects.get(email=email,password=password)
+    try:
+        studentData=models.Student.objects.get(email=email,password=password)
+    except models.Student.DoesNotExist:
+         studentData=None
+
     if studentData:
-        return JsonResponse({'bool':True})
+        return JsonResponse({'bool':True,'student_id':studentData.id})
 
     else:
         return JsonResponse({'bool':False})
