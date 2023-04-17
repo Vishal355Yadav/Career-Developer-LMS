@@ -42,7 +42,7 @@ class ChapterSerializer(serializers.ModelSerializer):
 class StudentSerializer(serializers.ModelSerializer):
 	class Meta: 
 		model=models.Student
-		fields=['id', 'full_name', 'email', 'password','qualification','mobile_no','address','interested_categories']
+		fields=['id', 'full_name', 'email', 'password','username','interested_categories']
 
 class StudentCourseEnrollSerializer(serializers.ModelSerializer):
     class Meta:

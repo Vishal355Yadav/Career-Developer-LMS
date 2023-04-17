@@ -70,11 +70,11 @@ class CourseList(generics.ListCreateAPIView):
         if 'category' in self.request.GET:
             category=self.request.GET['category']
             qs=models.Course.objects.filter(techs__icontains=category)
-    # #     if  'skill_name' in self. request.GET and 'teacher' in self.request.GET:
-    #         skill_name=self. request.GET[ 'skill_name' ]
-    #         teacher=self.request.GET['teacher']
-    #         teacher=models.Teacher.obiects.filter(id=teacher).first()
-    #         qs=models.Course.objects.filter(techs_icontains=skill_name, teacher=teacher)
+        if  'skill_name' in self.request.GET and 'teacher' in self.request.GET:
+            skill_name=self. request.GET[ 'skill_name' ]
+            teacher=self.request.GET['teacher']
+            teacher=models.Teacher.obiects.filter(id=teacher).first()
+            qs=models.Course.objects.filter(techs_icontains=skill_name, teacher=teacher)
 
         return qs
         
@@ -111,18 +111,24 @@ class ChapterDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset=models.Chapter.objects.all()
     serializer_class=ChapterSerializer
 
+#Student Data
 class StudentList(generics.ListCreateAPIView):
     queryset=models.Student.objects.all()
     serializer_class=StudentSerializer
 # permission classes=[permissions.IsAuthenticated]
 
+@csrf_exempt
 def student_login(request):
     email=request.POST['email']
     password=request.POST['password']
 
-    studentData=models.Student.objects.get(email=email,password=password)
+    try:
+        studentData=models.Student.objects.get(email=email,password=password)
+    except models.Student.DoesNotExist:
+         studentData=None
+
     if studentData:
-        return JsonResponse({'bool':True})
+        return JsonResponse({'bool':True,'student_id':studentData.id})
 
     else:
         return JsonResponse({'bool':False})

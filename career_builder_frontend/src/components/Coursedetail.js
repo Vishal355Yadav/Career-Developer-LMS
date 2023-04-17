@@ -2,7 +2,7 @@ import {Link} from 'react-router-dom';
 import axios from 'axios';
 import  {useEffect,useState} from 'react';
 import {useParams} from 'react-router-dom';  //to get id of the course which help to fetch form database
-const siteUrl='http://127.0.0.1:8000/';
+const siteUrl='http://127.0.0.1:8000';
 const baseUrl='http://127.0.0.1:8000/api';
 function CourseDetail(){
   const [courseData,setcourseData]=useState([]);
@@ -41,11 +41,10 @@ function CourseDetail(){
                     <h3>{courseData.title}</h3>
                     <p> {courseData.description}
                     </p>
-                    <p>Author : <Link to={'/teacher-detail/'+teacherData.id}><strong>{teacherData.full_name}</strong></Link></p>
+                    <p>Author : <Link to={`/teacher-detail/${teacherData.id}`}><strong>{teacherData.full_name}</strong></Link></p>
                     <p>Techs :<strong>{techListData.map((tech,index)=>
-                      <Link to ={'/category/'+ tech.trim()} className='badge badge-pill text-dark bg-warning mr-2'>{tech}</Link> 
-                    )}
-                      </strong></p>
+                      <Link to ={`/category/${ tech.trim()}`} className='badge badge-pill text-dark bg-warning mr-2'>{tech.trim()}</Link> 
+                    )}</strong></p>
                     <p><strong>Duration :3 Hours 30 Minutes</strong></p>
                     <p><strong>Total Enrolled: 355 Students</strong></p>
                     <p><strong>Rating : 4.5/5</strong></p>
@@ -81,12 +80,7 @@ function CourseDetail(){
                         </div>
                       </div> 
                  </li>)}
-
-                 {/* video play above */}
-                 
-                 
-                 
-                 </ul>
+               </ul>
               
             </div>
             <h3 className="pb-1 mb-5">Related Courses</h3>

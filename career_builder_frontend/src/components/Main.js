@@ -5,10 +5,12 @@ import About from './About';
 import Login from './user/Login';
 import Dashboard from './user/Dashboard';
 import Register from './user/Register';
-import TeacherDetail from './TeacherDetail'
 import AllCourses from './AllCourses';
+import Logout from './user/StudentLogout';
 // teacher 
+import TeacherDetail from './TeacherDetail'
 import TeacherLogin from './Teacher/TeacherLogin';
+import TeacherLogout from './Teacher/TeacherLogout';
 import TeacherDashboard from './Teacher/TeacherDashboard';
 import TeacherRegister from './Teacher/TeacherRegister';
 import TeacherAddCourse from './Teacher/TeacherAddCourse';
@@ -43,7 +45,8 @@ function Main() {
           <Route path='/' element={<Home/>}/>
           <Route path='/about' element={<About/>}/>
           <Route path='/CourseDetail/:course_id' element={<CourseDetail/>}/>
-          <Route path='/user-login' element ={<Login/>}/>
+          <Route path='/user-login' element ={<Login/>}/>          
+          <Route path='/logout' element ={<Logout/>}/>
           <Route path='/user-register' element ={<Register/>}/>
           <Route path='/user-dashboard' element ={<Dashboard/>}/>
           <Route path='/my-courses' element ={<Mycourses/>}/>
@@ -71,7 +74,7 @@ function Main() {
           <Route path='/popular-courses' element={<PopularCourses/>}/> 
           <Route path='/popular-teachers' element={<PopularTeacher/>}/> 
           <Route path='/category/:category_slug' element={<CategoryCourses/>}/>
-          <Route path='/teacher-skill-courses/:skill_name/:techer_id' element={<TeacherSkillCourses/>}/>
+          <Route path='/teacher-skill-courses/:skill_name/:teacher-id' element={<TeacherSkillCourses/>}/>
         </Routes>
         <Footer/>
       </div> 
