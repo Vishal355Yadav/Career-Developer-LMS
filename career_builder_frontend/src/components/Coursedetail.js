@@ -100,7 +100,7 @@ const enrollCourse=()=>{
                       <Link to ={`/category/${ tech.trim()}`} className='badge badge-pill text-dark bg-warning mr-2'>{tech.trim()}</Link> 
                     )}</strong></p>
                     <p><strong>Duration :3 Hours 30 Minutes</strong></p>
-                    <p><strong>Total Enrolled: 355 Students</strong></p>
+                    <p><strong>Total Enrolled: {courseData.total_enrolled_students} Student(s)</strong></p>
                     <p><strong>Rating : 4.5/5</strong></p>
                     {
                       enrollStatus==='success' && userLoginStatus == 'success' &&
