@@ -30,9 +30,10 @@ import {Routes, Route} from 'react-router-dom';
 import PopularCourses from './PopularCourses';
 import PopularTeacher from './PopularTeacher';
 import CategoryCourses from './CetegoryCourses';
+import TeacherSkillCourses from './TeacherSkillCourses';
 import TeacherLogout from './Teacher/TeacherLogout';
 import TeacherAddChapter from './Teacher/TeacherAddChapter';
-// import EditChapter from './Teacher/EditChapter';
+
 
 function Main() {
     return (
@@ -70,6 +71,7 @@ function Main() {
           <Route path='/popular-courses' element={<PopularCourses/>}/> 
           <Route path='/popular-teachers' element={<PopularTeacher/>}/> 
           <Route path='/category/:category_slug' element={<CategoryCourses/>}/>
+          <Route path='/teacher-skill-courses/:skill_name/:techer_id' element={<TeacherSkillCourses/>}/>
         </Routes>
         <Footer/>
       </div> 

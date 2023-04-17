@@ -7,6 +7,7 @@ const baseUrl='http://127.0.0.1:8000/api';
 function TeacherDetail(){
     const [teacherData,setteacherData]=useState([]);
     const [courseData,setcourseData]=useState([]);
+    const [skillList,setskillList]=useState([]);
     let {teacher_id}=useParams();
     useEffect(()=>{
         try{
@@ -15,6 +16,7 @@ function TeacherDetail(){
             // console.log(res);
             setteacherData(res.data);
             setcourseData(res.data.teacher_courses);
+            setskillList(res.data.skill_list);  
           });
         }
         catch(error){
@@ -31,7 +33,9 @@ function TeacherDetail(){
             <div className='col-8'>
                 <h3>{teacherData.full_name}</h3>
                 <p> {teacherData.detail}</p>
-                <p><strong>Skills : </strong><Link to="/category/php"><strong>PHP,</strong></Link> <Link to="/category/php"><strong>Python,</strong></Link><Link to="/category/php"><strong>JavaScipt</strong></Link></p>
+                <p><strong>Skills :&nbsp; </strong>{skillList.map((skill,index)=>
+                      <Link to ={'/category/'+ skill.trim()} className='badge badge-pill text-dark bg-warning mr-2'>{skill.trim()}</Link> 
+                    )}</p>
                 <p><strong>Recents: <Link to="/category/php"><strong>React JS Course</strong></Link></strong></p>
                 <p><strong>Rating : 4.5/5</strong></p>
             </div>
