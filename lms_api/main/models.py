@@ -45,6 +45,8 @@ class Course(models.Model):
 	def tech_list(self):
 		tech_list=self.techs.split(',')
 		return tech_list
+	def __str__(self):
+		return self.title	
 
 class Student(models.Model):
 	full_name=models.CharField(max_length=100)
@@ -52,6 +54,9 @@ class Student(models.Model):
 	password=models.CharField(max_length=100)
 	username=models.CharField(max_length=100)
 	interested_categories=models.TextField()
+
+	def __str__(self):
+		return self.full_name
 
 	class Meta:
 		verbose_name_plural="4. Students"

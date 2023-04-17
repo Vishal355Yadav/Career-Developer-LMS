@@ -42,10 +42,9 @@ function Header() {
                   <li><Link className="dropdown-item" to="/user-login">Login</Link></li>
                   <li><Link className="dropdown-item" to="/user-register">Register</Link></li>
                   </>}
-                  {studentLoginStatus=='true' &&
-                  <>     
+                  {studentLoginStatus==='true' && <>    
                   <li><Link className="dropdown-item" to="/user-dashboard">Dashboard</Link></li>
-                  <li><a className="dropdown-item" href="logout">Logout</a></li>
+                  <li><a className="dropdown-item" href="/logout">Logout</a></li>
                   </>}
                 </ul>
               </li>
