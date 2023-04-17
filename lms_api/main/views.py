@@ -162,8 +162,8 @@ class CourseRatingList(generics.ListCreateAPIView):
 def fetch_rating_status (request, student_id, course_id):
     student=models.Student.objects.filter(id=student_id).first()
     course=models.Course.objects. filter(id=course_id).first()
-    enrollStatus=models.CourseRating.objects.filter(course=course,student=student).count()
-    if enrollStatus:
+    ratingStatus=models.CourseRating.objects.filter(course=course,student=student).count()
+    if ratingStatus:
         return JsonResponse({'bool': True})
     else:
         return JsonResponse({'bool': False})
