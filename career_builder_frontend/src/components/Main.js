@@ -33,7 +33,6 @@ import PopularCourses from './PopularCourses';
 import PopularTeacher from './PopularTeacher';
 import CategoryCourses from './CetegoryCourses';
 import TeacherSkillCourses from './TeacherSkillCourses';
-import TeacherLogout from './Teacher/TeacherLogout';
 import TeacherAddChapter from './Teacher/TeacherAddChapter';
 
 
@@ -81,6 +80,4 @@ function Main() {
     );
   }
   
-  export default Main;
-
-  
+  export default Main;  

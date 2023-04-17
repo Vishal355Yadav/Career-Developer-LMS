@@ -1,6 +1,6 @@
 import  {useEffect,useState} from 'react';
 import axios from 'axios';
-const baseUrl ='http://127.0.0.1:8000/api/teacher/';
+const baseUrl ='http://127.0.0.1:8000/api/student/';
 function Register(){
     useEffect(()=>{
         document.title='User Register';
@@ -28,7 +28,6 @@ function Register(){
         studentFormData.append("password",studentData.password)
         studentFormData.append("username",studentData.username)
         studentFormData.append("interested_categories",studentData.interested_categories)
-    
         try{
             axios.post(baseUrl,studentFormData).then((response)=>{
                 setstudentData({
@@ -68,7 +67,7 @@ function Register(){
                         </div>
                         <div className="mb-3">
                             <label for="exampleInputFullname" className="form-label">Username</label>
-                            <input onChange={handleChange} type="text" name="username" value={studentData.username} className="form-control" id="exampleInputname" aria-describedby="nameHelp"/>
+                            <input onChange={handleChange} type="text" name="username" value={studentData.username} className="form-control" id="exampeInputname" aria-describedby="nameHelp"/>
                             <div id="nameHelp" className="form-text"></div>
                         </div>
                         <div className="mb-3">
@@ -77,7 +76,7 @@ function Register(){
                         </div>
                         <div className="mb-3">
                             <label for="exampleInputFullname" className="form-label">Interests</label>
-                            <input onChange={handleChange} type="text" name="interested_categories" value={studentData.interested_categories} className="form-control" id="exampleInputname" aria-describedby="nameHelp"/>
+                            <input onChange={handleChange} type="text" name="interested_categories" value={studentData.interested_categories} className="form-control" id="examplenputname" aria-describedby="nameHelp"/>
                             <div id="nameHelp" className="form-text">Php, Python, Java, etc.</div>
                         </div>
                         <button onClick={submitForm} type="submit" className="btn btn-primary">Register</button>

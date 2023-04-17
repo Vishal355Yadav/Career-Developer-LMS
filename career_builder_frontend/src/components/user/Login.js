@@ -21,12 +21,11 @@ function Login(){
         });
     }
     const submitForm=()=>{
-        const StudentFormData=new FormData;
-        StudentFormData.append('email',studentLoginData.email)
-        StudentFormData.append('password',studentLoginData.password)
+        const studentFormData=new FormData;
+        studentFormData.append('email',studentLoginData.email)
+        studentFormData.append('password',studentLoginData.password)
         try{
-            axios.post(baseUrl+'/student-login',StudentFormData)
-            .then((res)=>{
+            axios.post(baseUrl+'/student-login',studentFormData).then((res)=>{
                 if(res.data.bool===true){
                     localStorage.setItem('studentLoginStatus',true);
                     localStorage.setItem('studentId',res.data.student_id);
