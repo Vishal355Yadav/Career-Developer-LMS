@@ -169,7 +169,7 @@ const enrollCourse=()=>{
                     <p><strong>Total Enrolled: {courseData.total_enrolled_students} Student(s)</strong></p>
                     <p><strong>Rating : {AvgRating}/5
                     {
-                     enrollStatus==='success' && userLoginStatus == 'success' && ratingStatus!='success' &&
+                     enrollStatus==='success' && userLoginStatus === 'success' &&
                       <>
                       {ratingStatus!='success' &&
                         <button className='btn btn-success btn-sm ms-2' data-bs-toggle="modal" data-bs-target="#ratingModal">Rating</button>
@@ -177,11 +177,12 @@ const enrollCourse=()=>{
                       {ratingStatus=='success' &&
                       <small className='ms-5 badge bg-info text-dark'>you already rated this course</small>
                       }
-                        <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+                        <div className="modal fade" id="ratingModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                           <div className="modal-dialog modal-lg">
                             <div className="modal-content">
                               <div className="modal-header">
-                                <h1 className="modal-title fs-5" id="exampleModalLabel">Rate for {courseData.title} </h1>
+                                <h1 className="modal-title fs-5" id="ratingModalLabel">Rate for {courseData.title} </h1>
                                 <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                               </div>
                               <div className="modal-body">
@@ -198,7 +199,7 @@ const enrollCourse=()=>{
                                 </div>
                                 <div class="mb-3">
                                   <label for="exampleInputPassword1" class="form-label">Review</label>
-                                  <textarea onChange={handleChange} className='form-control' name='reviews'></textarea>
+                                  <textarea onChange={handleChange} className='form-control' name='reviews'  row="10"></textarea>
                                 </div>
                                 <button onClick={formSubmit} type="submit" class="btn btn-primary">Submit</button>
                               </form>

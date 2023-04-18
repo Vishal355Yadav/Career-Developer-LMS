@@ -50,7 +50,7 @@ class Course(models.Model):
 		return total_enrolled_students
 	def course_rating(self):
 		course_rating=CourseRating.objects.filter(course=self).aggregate(avg_rating=models.Avg('rating'))	
-		return course_rating('avg_rating')
+		return course_rating['avg_rating']
 	def __str__(self):
 		return self.title	
 
@@ -136,9 +136,9 @@ class StudentCourseEnrollment(models.Model):
 	def __str__(self):
 		return f"{self.course} - {self.student}"
 
-class CourseRating (models.Model) :
-	course=models.ForeignKey(Course, on_delete=models. CASCADE)
-	student=models.ForeignKey(Student, on_delete=models. CASCADE)
+class CourseRating(models.Model) :
+	course=models.ForeignKey(Course, on_delete=models.CASCADE,null=True)
+	student=models.ForeignKey(Student, on_delete=models.CASCADE,null=True)
 	rating=models.PositiveBigIntegerField(default=0)
 	reviews=models.TextField(null=True)
 	review_time=models.DateTimeField(auto_now_add=True)

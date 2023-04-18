@@ -6,12 +6,13 @@ class TeacherSerializer(serializers.ModelSerializer):
 	class Meta:
 		model=models.Teacher
 		fields=['id','full_name','detail','email','password','qualification','mobile_no','skills','teacher_courses','skill_list'] 
-	def __init__(self, *args,** kwargs):
-		super (CourseRatingSerializer, self).__init__(*args,**kwargs)
-		request = self.context.get ('request')
-		self.Meta.depth = 0
-		if request and request.method == 'GET':
-			self.Meta.depth = 1
+	# def __init__(self, *args,** kwargs):
+	# 	super (CourseRatingSerializer, self).__init__(*args,**kwargs)
+	# 	request = self.context.get ('request')
+	# 	self.Meta.depth = 0
+	# 	if request and request.method == 'GET':
+	# 		self.Meta.depth = 1
+		depth=1
 
 class FlatPagesSerializer(serializers.ModelSerializer):
 	class Meta:
@@ -65,8 +66,9 @@ class CourseRatingSerializer(serializers.ModelSerializer):
     class Meta:
         model=models.CourseRating
         fields=['id', 'course','student', 'rating', 'reviews', 'review_time']
+
     def __init__(self, *args,** kwargs):
-        super (CourseRatingSerializer, self).__init__(*args,**kwargs)
+        super(CourseRatingSerializer, self).__init__(*args, **kwargs)
         request = self.context.get ('request')
         self.Meta.depth = 0
         if request and request.method == 'GET':
