@@ -2,9 +2,6 @@ import  {useEffect,useState} from 'react';
 import axios from 'axios';
 const baseUrl ='http://127.0.0.1:8000/api/teacher/';
 function TeacherRegister(){
-    useEffect(()=>{
-        document.title='Teacher Register';
-    });
     const [teacherData,setteacherData]=useState({
         'full_name':'',
         'email':'',
@@ -48,6 +45,9 @@ function TeacherRegister(){
         }
     
     };
+    useEffect(()=>{
+        document.title='Teacher Register';
+    });
 
 
     return(
@@ -68,7 +68,7 @@ function TeacherRegister(){
                         <div className="mb-3">
                             <label for="exampleInputEmail1" className="form-label">Email</label>
                             <input onChange={handleChange} type="email" name="email"  value={teacherData.email} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
-                            <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
+                            <div id="emailHelp" className="form-text">We will never share your email with anyone else.</div>
                         </div>
                         <div className="mb-3">
                             <label for="exampleInputPassword1" className="form-label">Password</label>
