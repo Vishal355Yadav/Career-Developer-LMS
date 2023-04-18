@@ -66,16 +66,18 @@ function TeacherProfileSetting(){
                 'content-type': 'multipart/form-data'
             }
             }).then((response)=>{
-                setteacherData({
-                    'full_name':'',
-                    'email':'',
-                    'qualification':'',
-                    'mobile_no':'',
-                    'skills': '',
-                    'profile_img':'',
-                    'f_img':'',
-                    'status': 'success'
-                });
+                if(response.status==200){
+                  Swal.fire({
+                    title: 'Data has been updated',
+                    icon:'success',
+                    toast:true,
+                    timer:3000,
+                    position:'top-right',
+                    timerProgressBar:true,
+                    showConfirmButton:false
+            });
+             
+        }
             });
         }catch(error){
             console.log(error);
@@ -104,7 +106,7 @@ function TeacherProfileSetting(){
                       <div className="mb-3 row">
                         <label for="staticEmail" className="col-sm-2 col-form-label">Full Name</label>
                         <div className="col-sm-10">
-                           <input type="text" value={teacherData.full_name} onChange={handleChange} className="form-control" id="staticEmail"/>
+                           <input type="text" name="full_name" value={teacherData.full_name} onChange={handleChange} className="form-control" id="staticEmail"/>
                         </div>
                        </div>
                         <div className="mb-3 row">

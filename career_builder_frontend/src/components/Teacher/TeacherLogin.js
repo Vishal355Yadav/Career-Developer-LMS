@@ -37,16 +37,13 @@ function TeacherLogin(){
         }
        
     }
-
+    useEffect(()=>{
+        document.title='Teacher Login';
+    });
     const teacherLoginStatus=localStorage.getItem('teacherLoginStatus')
     if(teacherLoginStatus===true){
         window.location.href='/teacher-dashboard';
     }
-
-
-    useEffect(()=>{
-        document.title='Teacher Login';
-    });
     return(
         <div className="container mt-4 ">
         <div className="row">
