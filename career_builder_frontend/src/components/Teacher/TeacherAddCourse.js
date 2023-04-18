@@ -2,6 +2,7 @@ import {Link} from 'react-router-dom';
 import TeacherSidebar from './TeacherSidebar';
 import  react,{useEffect,useState} from 'react';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 const baseUrl='http://127.0.0.1:8000/api';
 function TeacherAddCourse(){
@@ -56,6 +57,7 @@ const formSubmit=()=>{
         })
     .then((res)=>{
         // console.log(res.data);
+        
         window.location.href='/add-course';
        
     });

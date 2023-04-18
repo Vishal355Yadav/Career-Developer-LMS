@@ -3,6 +3,7 @@ import TeacherSidebar from './TeacherSidebar';
 import {useEffect,useState} from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 const baseUrl='http://127.0.0.1:8000/api';
 function TeacherAddChapter(){
@@ -48,6 +49,19 @@ const formSubmit=()=>{
         })
     .then((res)=>{
         // console.log(res.data);
+        if(res.status==200|| res.status==201){
+            Swal.fire({
+              title:'chapter has been added',
+              icon: 'success',
+              toast:true,
+              timer:5000,
+              position:'top-right',
+              timerProgressBar:true,
+              showConfirmButton:false
+            })
+  
+            window.location.reload();
+          }
         window.location.href='/add-chapter/1';
        
     });
