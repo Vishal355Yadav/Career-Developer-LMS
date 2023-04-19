@@ -12,6 +12,7 @@ from django.contrib.flatpages.models import FlatPage
 from .serializers import TeacherSerializer,FlatPagesSerializer,ContactSerializer,FAQSerializer,CategorySerializer,CourseSerializer,ChapterSerializer,StudentSerializer,StudentCourseEnrollSerializer,CourseRatingSerializer
 
 from . import models
+from django.db.models import Q
 
 
 class TeacherList(generics.ListCreateAPIView):
@@ -75,7 +76,16 @@ class CourseList(generics.ListCreateAPIView):
             teacher=self.request.GET['teacher']
             teacher=models.Teacher.obiects.filter(id=teacher).first()
             qs=models.Course.objects.filter(techs__icontains=skill_name, teacher=teacher)
-
+        elif 'studentId' in self.kwargs:
+            student_id=self.kwargs['studentId']
+            student=models.Student.objects.get(pk=student_id)
+            print(student.interested_categories)
+            queries= [Q(techs__iendswitch=value) for value in student.interested_categories]
+            query=queries.pop()
+            for item in queries:
+                query |=item
+            qs=models.Course.objects.filter(query)
+            return qs
         return qs
         
 class CourseDetailView(generics.RetrieveAPIView):

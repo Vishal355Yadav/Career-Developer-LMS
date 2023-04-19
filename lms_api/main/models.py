@@ -9,7 +9,6 @@ class Teacher(models.Model):
 	password=models.CharField(max_length=100,blank=True,null=True)
 	qualification=models.CharField(max_length=100)
 	mobile_no=models.CharField(max_length=100)
-	profile_img=models.ImageField(upload_to='teacher_profile_imgs/',null=True)
 	skills= models.TextField()
 
 	class Meta:

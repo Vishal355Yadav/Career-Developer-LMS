@@ -10,7 +10,7 @@ function MyUsers(){
 
     // console.log(teacherId);
     useEffect(()=>{
-        document.title='My Courses';
+        document.title='My Users';
         try{
             axios.get(baseUrl+'/fetch-all-enrolled-students/'+ teacherId)
             .then((res)=>{ 

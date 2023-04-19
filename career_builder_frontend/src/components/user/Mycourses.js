@@ -9,7 +9,7 @@ function Mycourses(){
    useEffect(()=>{
         document.title='My Courses';
         try{
-            axios.get(baseUrl+'/fetch-all-enrolled-courses/'+ studentId)
+            axios.get(baseUrl+'/fetch-enrolled-courses/'+ studentId)
             .then((res)=>{ 
                 setcourseData(res.data);
             });
@@ -38,7 +38,7 @@ function Mycourses(){
                 	{courseData.map((row,index)=>
                 	<tr>
 	                    <td><Link to={`/detail/`+row.course.id}>{row.course.title}</Link></td>
-	                    <td><Link to='/'>{row.course.teacher.full_name}</Link></td>
+	                    <td><Link to={`/teacher-detail/`+row.course.teacher.id}>{row.course.teacher.full_name}</Link></td>
 	                </tr>
 	                )}
                 </tbody>
