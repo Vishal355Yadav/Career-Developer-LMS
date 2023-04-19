@@ -57,6 +57,7 @@ function TeacherProfileSetting(){
         teacherFormData.append("email",teacherData.email)
         teacherFormData.append("qualification",teacherData.qualification)
         teacherFormData.append("mobile_no",teacherData.mobile_no)
+        teacherFormData.append("profile_img",teacherData.profile_img)
         teacherFormData.append("skills",teacherData.skills)
         if(teacherData.f_img!=='' ){
           teacherFormData.append('profile_img',teacherData.f_img,teacherData.f_img.name);
@@ -89,10 +90,6 @@ function TeacherProfileSetting(){
    useEffect(()=>{
         document.title='Teacher Profile';
     });
-    const teacherLoginStatus=localStorage.getItem('teacherLoginStatus')
-    if(teacherLoginStatus!=true){
-        window.location.href='/teacher-login';
-    }
     return(
         <div className="container mt-4 ">
             <div className="row">

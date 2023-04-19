@@ -38,10 +38,6 @@ function TeacherChangePassword(){
     useEffect(()=>{
         document.title='Teacher Change Password';
     });
-    const teacherLoginStatus=localStorage.getItem('teacherLoginStatus')
-    if(teacherLoginStatus!=true){
-        window.location.href='/teacher-login';
-    }
     return(
         <div className="container mt-4 ">
             <div className="row">

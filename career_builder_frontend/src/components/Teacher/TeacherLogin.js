@@ -16,7 +16,7 @@ function TeacherLogin(){
         });
     }
     const submitForm=()=>{
-        const teacherFormData=new FormData;
+        const teacherFormData=new FormData();
         teacherFormData.append('email',teacherLoginData.email)
         teacherFormData.append('password',teacherLoginData.password)
         try{

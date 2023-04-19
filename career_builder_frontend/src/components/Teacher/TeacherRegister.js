@@ -48,10 +48,6 @@ function TeacherRegister(){
     useEffect(()=>{
         document.title='Teacher Register';
     });
-    const teacherLoginStatus=localStorage.getItem('teacherLoginStatus')
-    if(teacherLoginStatus!=true){
-        window.location.href='/teacher-login';
-    }
     return(
         <div className="container mt-4 ">
         <div className="row">
@@ -63,35 +59,35 @@ function TeacherRegister(){
                     <div className="card-body">
                     {/* <form> */}
                         <div className="mb-3">
-                            <label for="exampleInputFullname" className="form-label">Full Name</label>
+                            <label htmlFor="exampleInputFullname" className="form-label">Full Name</label>
                             <input onChange={handleChange} type="text" name="full_name" value={teacherData.full_name} className="form-control" id="exampleInputname" aria-describedby="nameHelp"/>
                             <div id="nameHelp" className="form-text"></div>
                         </div>
                         <div className="mb-3">
-                            <label for="exampleInputEmail1" className="form-label">Email</label>
+                            <label htmlFor="exampleInputEmail1" className="form-label">Email</label>
                             <input onChange={handleChange} type="email" name="email"  value={teacherData.email} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
                             <div id="emailHelp" className="form-text">We will never share your email with anyone else.</div>
                         </div>
                         <div className="mb-3">
-                            <label for="exampleInputPassword1" className="form-label">Password</label>
+                            <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
                             <input onChange={handleChange} type="password" name="password" value={teacherData.password}  className="form-control" id="exampleInputPassword1"/>
                         </div>
                         {/* <div className="mb-3">
-                            <label for="exampleInputPassword1" className="form-label"> Confirm Password</label>
+                            <label htmlFor="exampleInputPassword1" className="form-label"> Confirm Password</label>
                             <input type="password" className="form-control" id="exampleInputPassword1"/>
                         </div> */}
                         <div className="mb-3">
-                            <label for="exampleInputFullname" className="form-label">Qualifications</label>
+                            <label htmlFor="exampleInputFullname" className="form-label">Qualifications</label>
                             <input onChange={handleChange}  type="text" name="qualification"  value={teacherData.qualification} className="form-control" id="exampleInputqualification" aria-describedby="nameHelp"/>
                             <div id="nameHelp" className="form-text"></div>
                         </div>
                         <div className="mb-3">
-                            <label for="exampleInputFullname" className="form-label">Mobile No.</label>
+                            <label htmlFor="exampleInputFullname" className="form-label">Mobile No.</label>
                             <input  onChange={handleChange} type="number" name="mobile_no"  value={teacherData.mobile_no}  className="form-control" id="exampleInputmobile" aria-describedby="nameHelp"/>
                             <div id="nameHelp" className="form-text"></div>
                         </div>
                         <div className="mb-3">
-                            <label for="exampleInputSkill" className="form-label">Skills</label>
+                            <label htmlFor="exampleInputSkill" className="form-label">Skills</label>
                            <textarea  onChange={handleChange} name="skills" value={teacherData.skills}  className="form-control"></textarea>
                             <div id="nameHelp" className="form-text"> Php, python,javascipt etc</div>
                         </div>
