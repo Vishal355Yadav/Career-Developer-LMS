@@ -33,9 +33,19 @@ function TeacherDetail(){
             <div className='col-8'>
                 <h3>{teacherData.full_name}</h3>
                 <p> {teacherData.detail}</p>
-                <p><strong>Skills :&nbsp; </strong>{skillList.map((skill,index)=>
-                      <Link to ={`/teacher-skill-courses/${ skill.trim()}/${teacherData.id}`} className='badge badge-pill text-dark bg-warning mr-2'>{skill.trim()}</Link> 
-                    )}</p>
+                <p><strong>Skills :&nbsp; </strong>
+                {/* {skillList.map((skill,index)=>
+                      <Link to ={'/teacher-skill-courses/${skill.trim()}/${teacherData.id}'} className='badge badge-pill text-dark bg-warning mr-2'>{skill.trim()}</Link> 
+                    )} */}
+                   {skillList?.map((skill,index)=>
+                    <tr>
+                    <td><Link to={'/teacher-skill-courses/'+skill.trim()+'/'+teacherData.id}>{skill.trim()}</Link></td>
+                    <hr/>
+                
+                  
+                  </tr>
+                    )}  
+                    </p>
                 <p><strong>Recents: <Link to="/category/php"><strong>React JS Course</strong></Link></strong></p>
                 <p><strong>Rating : 4.5/5</strong></p>
             </div>
@@ -45,13 +55,15 @@ function TeacherDetail(){
             <h5>Course List</h5>      
            </div>
            <div className="list-group list-group-flush">
-            {courseData.map((course,index)=>
-                <Link to ={`/detail/${course.id}`} className='list-group-item list-group-item-action'>{course.title}</Link>
-            )}
+            {/* {courseData.map((course,index)=>
+             <Link to ={'/detail/${course.id}'} className='list-group-item list-group-item-action'>{course.title}</Link>
+            )} */}
+
             </div>
           
         </div>
      </div>
+    
     );
 }
 export default TeacherDetail;

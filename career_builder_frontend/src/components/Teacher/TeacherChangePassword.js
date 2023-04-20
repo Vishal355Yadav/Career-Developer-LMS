@@ -22,7 +22,7 @@ function TeacherChangePassword(){
         teacherFormData.append("password",teacherData.password)
         try{
             axios.post(baseUrl+'/teacher/change-password'+teacherId+'/',teacherFormData).then((response)=>{
-               if(response.status==200){
+               if(response.status===200){
                   window.location.href='/teacher-logout';
              
         }else{
