@@ -15,7 +15,7 @@ function Mycourses(){
             });
         }catch(error){ 
             console.log(error);
-        } 
+        }
     },[]);
     return(
         <div className="container mt-4 ">
@@ -38,7 +38,7 @@ function Mycourses(){
                 	{courseData.map((row,index)=>
                 	<tr>
 	                    <td><Link to={`/detail/`+row.course.id}>{row.course.title}</Link></td>
-	                    <td><Link to={`/teacher-detail/`+row.course.teacher.id}>{row.course.teacher.full_name}</Link></td>
+	                    <td><Link to={`/teacher-course-detail/`+row.course.teacher.id}>{row.course.teacher.full_name}</Link></td>
 	                </tr>
 	                )}
                 </tbody>

@@ -9,7 +9,7 @@ from rest_framework.response import Response
 from rest_framework import generics
 from rest_framework import permissions
 from django.contrib.flatpages.models import FlatPage
-from .serializers import TeacherSerializer,FlatPagesSerializer,ContactSerializer,FAQSerializer,CategorySerializer,CourseSerializer,ChapterSerializer,StudentSerializer,StudentCourseEnrollSerializer,CourseRatingSerializer
+from .serializers import TeacherSerializer,FlatPagesSerializer,ContactSerializer,FAQSerializer,CategorySerializer,CourseSerializer,ChapterSerializer,StudentSerializer,StudentCourseEnrollSerializer,CourseRatingSerializer,StudentFavoriteCourseSerializer
 
 from . import models
 from django.db.models import Q
@@ -80,7 +80,7 @@ class CourseList(generics.ListCreateAPIView):
             student_id=self.kwargs['studentId']
             student=models.Student.objects.get(pk=student_id)
             print(student.interested_categories)
-            queries= [Q(techs__iendswitch=value) for value in student.interested_categories]
+            queries= [Q(techs__iendswith=value) for value in student.interested_categories]
             query=queries.pop()
             for item in queries:
                 query |=item
@@ -147,6 +147,19 @@ class StudentEnrollCourseList(generics.ListCreateAPIView):
     queryset=models.StudentCourseEnrollment.objects.all()
     serializer_class=StudentCourseEnrollSerializer
 
+class StudentFavoriteCourseList(generics.ListCreateAPIView):
+    queryset=models.StudentFavoriteCourse.objects.all()
+    serializer_class=StudentFavoriteCourseSerializer
+
+def remove_favorite_course(request, student_id, course_id):
+    student=models.Student.objects.filter(id=student_id).first()
+    course=models.Course.objects.filter(id=course_id).first()
+    favoriteStatus=models.StudentFavoriteCourse.objects.filter(course=course,student=student).delete()
+    if favoriteStatus:
+        return JsonResponse({'bool': True})
+    else:
+        return JsonResponse({'bool': False})
+
 def fetch_enroll_status(request, student_id, course_id):
     student=models.Student.objects.filter(id=student_id).first()
     course=models.Course.objects.filter(id=course_id).first()
@@ -202,7 +215,7 @@ def teacher_change_password(request,teacher_id):
          teacherData=None
 
     if teacherData:
-        models.Teacher.objects.filter(id=teacher_id).update(pasword=pasword)
+        models.Teacher.objects.filter(id=teacher_id).update(password=password)
         return JsonResponse({'bool':True})
 
     else:
