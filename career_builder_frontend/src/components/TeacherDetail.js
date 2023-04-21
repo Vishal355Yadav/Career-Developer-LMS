@@ -39,7 +39,7 @@ function TeacherDetail(){
                     )} */}
                    {skillList?.map((skill,index)=>
                     <tr>
-                    <td><Link to={'/teacher-skill-courses/'+skill.trim()+'/'+teacherData.id}>{skill.trim()}</Link></td>
+                    <td><Link to={'/teacher-skill-courses/'+skill.trim()+'/'+teacherData.id}> hj{skill.trim()}</Link></td>
                     <hr/>
                 
                   
@@ -55,10 +55,11 @@ function TeacherDetail(){
             <h5>Course List</h5>      
            </div>
            <div className="list-group list-group-flush">
-            {/* {courseData.map((course,index)=>
+            {courseData?.map((course,index)=>
              <Link to ={'/detail/${course.id}'} className='list-group-item list-group-item-action'>{course.title}</Link>
-            )} */}
+            )}
 
+            
             </div>
           
         </div>
