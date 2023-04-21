@@ -135,6 +135,15 @@ class StudentCourseEnrollment(models.Model):
 	def __str__(self):
 		return f"{self.course} - {self.student}"
 
+class StudentFavoriteCourse(models.Model):
+	course=models.ForeignKey(Course, on_delete=models.CASCADE)
+	student=models.ForeignKey(Student, on_delete=models.CASCADE)
+	status=models.BooleanField(default=False)
+	class Meta:
+		verbose_name_plural="11. Student Favorite Courses"
+	def __str__(self):
+		return f"{self.course} - {self.student}"
+
 class CourseRating(models.Model) :
 	course=models.ForeignKey(Course, on_delete=models.CASCADE,null=True)
 	student=models.ForeignKey(Student, on_delete=models.CASCADE,null=True)

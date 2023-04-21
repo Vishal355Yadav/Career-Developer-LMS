@@ -68,7 +68,7 @@ const formSubmit=()=>{
     }
     _formData.append('techs',courseData.techs);
     try{
-        axios.put(baseUrl+'/teacher-course-detail/'+ course_id,_formData,{
+        axios.post(baseUrl+'/teacher-course-detail/'+ course_id,_formData,{
             headers:{
                 'content-type': 'multipart/form-data'
             }

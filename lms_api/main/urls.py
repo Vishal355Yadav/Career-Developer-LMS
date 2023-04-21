@@ -9,7 +9,7 @@ urlpatterns = [
     path('pages/<int:pk>/<str:page_slug>/', views.FlatPagesDetail.as_view()),
     path('contact/', views.ContactList.as_view()),
     path('faq/', views.FaqList.as_view()),
-    path( 'category/', views. CategoryList.as_view()), 
+    path('category/', views. CategoryList.as_view()), 
     # Course
     path('course/',views.CourseList.as_view()),
     # Course Detail
@@ -33,6 +33,8 @@ urlpatterns = [
     path('fetch-enrolled-students/<int:course_id>',views. EnrolledStudentList.as_view() ),
     path('fetch-enrolled-courses/<int:student_id>',views. EnrolledStudentList.as_view() ),
     path('fetch-recommended-courses/<int:studentId>',views. CourseList.as_view() ),
+    path('student-add-favorite-course/',views. StudentFavoriteCourseList.as_view() ),
+     path('student-remove-favorite-course/<int:course_id>/<int:student_id>',views. remove_favorite_course),
     path ('course-rating/<int:course_id>', views.CourseRatingList.as_view()),
     path('fetch-rating-status/<int:student_id>/<int:course_id>', views.fetch_rating_status),
     path('teacher/change-password/<int:teacher_id>/', views.teacher_change_password),
