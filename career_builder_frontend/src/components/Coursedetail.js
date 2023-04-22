@@ -128,7 +128,7 @@ const markAsFavorite=()=>{
   const _formData=new FormData();
   _formData.append('course',course_id);
   _formData.append('student',studentId);
-  _formData.append('status','True');
+  _formData.append('status',true);
   try{
       axios.post(baseUrl+'/student-add-favorite-course/',_formData,{
           headers:{
@@ -160,9 +160,9 @@ const removeFavorite=()=>{
   const _formData=new FormData();
   _formData.append('course',course_id);
   _formData.append('student',studentId);
-  _formData.append('status','True');
+  _formData.append('status',false);
   try{
-      axios.post(baseUrl+'/student-remove-favorite-course/',_formData,{
+      axios.get(baseUrl+'/student-remove-favorite-course/'+course_id+'/'+studentId,_formData,{
           headers:{
               'content-type': 'multipart/form-data'
           }
@@ -305,7 +305,7 @@ const removeFavorite=()=>{
                         <p><button onClick={markAsFavorite} type ="Add i your favorite course list" className='btn btn-outline-danger' ><i className="bi bi-heart-fill"></i></button></p>
                     }
                     {
-                      userLoginStatus==='success' && favoriteStatus== 'success' &&
+                      userLoginStatus==='success' && favoriteStatus=== 'success' &&
                         <p><button onClick={removeFavorite} type ="removed from the wish list" className='btn btn-danger' ><i className="bi bi-heart-fill"></i></button></p>
                     }
                    {

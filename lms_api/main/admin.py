@@ -14,7 +14,7 @@ admin.site.register(models.Notification,NotificationAdmin)
 
 admin.site.register(models.Contact)
 admin.site.register(models.FAQ)
-
+admin.site.register(models.StudentFavoriteCourse)
 admin.site.register(models.Chapter)
 
 admin.site.register(models.StudentCourseEnrollment)
