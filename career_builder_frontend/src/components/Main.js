@@ -35,6 +35,7 @@ import PopularTeacher from './PopularTeacher';
 import CategoryCourses from './CetegoryCourses';
 import TeacherSkillCourses from './TeacherSkillCourses';
 import TeacherAddChapter from './Teacher/TeacherAddChapter';
+import AddAssignment from './Teacher/AddAssignment';
 
 
 function Main() {
@@ -62,6 +63,7 @@ function Main() {
           <Route path='/add-course' element ={<TeacherAddCourse/>}/>
           <Route path='/edit-course/:course_id' element ={<EditCourse/>}/>
           <Route path='/add-chapter/:course_id' element ={<TeacherAddChapter/>}/>
+          <Route path='/add-assignment/:teacher_id/:student_id' element ={<AddAssignment/>}/>
           <Route path='/teacher-courses' element ={<TeacherMycourses/>}/>
           <Route path='/enrolled-students/:course_id' element ={<EnrolledStudents/>}/>
           <Route path='/teacher-change-password' element ={<TeacherChangePassword/>}/>

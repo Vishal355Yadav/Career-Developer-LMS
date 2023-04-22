@@ -9,7 +9,7 @@ from rest_framework.response import Response
 from rest_framework import generics
 from rest_framework import permissions
 from django.contrib.flatpages.models import FlatPage
-from .serializers import TeacherSerializer,FlatPagesSerializer,ContactSerializer,FAQSerializer,CategorySerializer,CourseSerializer,ChapterSerializer,StudentSerializer,StudentCourseEnrollSerializer,CourseRatingSerializer,StudentFavoriteCourseSerializer,TeacherDashboardSerializer
+from .serializers import TeacherSerializer,FlatPagesSerializer,ContactSerializer,FAQSerializer,CategorySerializer,CourseSerializer,ChapterSerializer,StudentSerializer,StudentCourseEnrollSerializer,CourseRatingSerializer,StudentFavoriteCourseSerializer,TeacherDashboardSerializer,StudentAssignmentSerializer
 
 from . import models
 from django.db.models import Q
@@ -78,7 +78,7 @@ class CourseList(generics.ListCreateAPIView):
         if  'skill_name' in self.request.GET and 'teacher' in self.request.GET:
             skill_name=self. request.GET[ 'skill_name' ]
             teacher=self.request.GET['teacher']
-            teacher=models.Teacher.obiects.filter(id=teacher).first()
+            teacher=models.Teacher.objects.filter(id=teacher).first()
             qs=models.Course.objects.filter(techs__icontains=skill_name, teacher=teacher)
         elif 'studentId' in self.kwargs:
             student_id=self.kwargs['studentId']
@@ -239,3 +239,15 @@ def teacher_change_password(request,teacher_id):
 
     else:
         return JsonResponse({'bool':False})
+
+class AssignmentList(generics.ListCreateAPIView):
+    queryset=models.StudentAssignment.objects.all()
+    serializer_class=StudentAssignmentSerializer   
+
+    def get_queryset(self):
+        student_id=self.kwargs[ 'student_id']
+        teacher_id=self.kwargs[ 'teacher_id']
+        student = models.Student.objects.get(pk=student_id)
+        teacher = models.Teacher.objects.get(pk=teacher_id)
+        return  models.StudentAssignment .objects.filter (student=student , teacher=teacher)
+        

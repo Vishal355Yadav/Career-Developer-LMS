@@ -43,7 +43,14 @@ class CourseSerializer(serializers.ModelSerializer):
 	class Meta:
 		model=models.Course
 		fields= ['id', 'category', 'teacher','title','description','featured_img','techs','course_chapters','related_videos','tech_list','total_enrolled_students','course_rating']
-		depth=1
+	def __init__(self,*args, **kwargs):
+		super(CourseSerializer,self).__init__(*args, **kwargs)
+		request=self.context.get('request')
+		self.Meta.depth=0
+		if request and request.method =='GET':
+			self.Meta.depth=2
+
+		# depth=1
 
 class ChapterSerializer(serializers.ModelSerializer):
 	class Meta:
@@ -88,3 +95,16 @@ class CourseRatingSerializer(serializers.ModelSerializer):
         self.Meta.depth = 0
         if request and request.method == 'GET':
             self.Meta.depth = 1
+
+class StudentAssignmentSerializer(serializers.ModelSerializer): 
+	class Meta:
+		model=models.StudentAssignment
+		fields= ['id', 'teacher','student','title','detail','add_time']
+	def __init__(self,*args, **kwargs):
+		super(StudentAssignmentSerializer,self).__init__(*args, **kwargs)
+		request=self.context.get('request')
+		self.Meta.depth=0
+		if request and request.method =='GET':
+			self.Meta.depth=2
+
+		# depth=1

@@ -43,6 +43,7 @@ urlpatterns = [
     path ('course-rating/<int:course_id>', views.CourseRatingList.as_view()),
     path('fetch-rating-status/<int:student_id>/<int:course_id>', views.fetch_rating_status),
     path('teacher/change-password/<int:teacher_id>/', views.teacher_change_password),
+    path('student-assignment/<int:teacher_id>/<int:student_id>',views.AssignmentList.as_view())
 
 
 ]
