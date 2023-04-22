@@ -32,14 +32,13 @@ function Mycourses(){
                     <tr>
                         <th>Name</th>
                         <th>Created By</th>
-                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
                 	{courseData.map((row,index)=>
                 	<tr>
-	                    <td><Link to={`/detail/`+row.course.id}>{row.course.title}</Link></td>
-	                    <td><Link to={`/teacher-course-detail/`+row.course.teacher.id}>{row.course.teacher.full_name}</Link></td>
+	                    <td><Link to={`/CourseDetail/`+row.course.id}>{row.course.title}</Link></td>
+	                    <td><Link to={`/teacher-detail/`+row.course.teacher.id}>{row.course.teacher.full_name}</Link></td>
 	                </tr>
 	                )}
                 </tbody>
