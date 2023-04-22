@@ -16,7 +16,7 @@ function TeacherDetail(){
             // console.log(res);
             setteacherData(res.data);
             setcourseData(res.data.teacher_courses);
-            setskillList(res.data.skill_list); 
+            setskillList(res.data.skill_list);
           });
         }
         catch(error){
@@ -32,19 +32,19 @@ function TeacherDetail(){
             </div>
             <div className='col-8'>
                 <h3>{teacherData.full_name}</h3>
-                <p> {teacherData.detail}</p>
-                <p><strong>Skills :&nbsp; </strong>
-                {/* {skillList.map((skill,index)=>
-                      <Link to ={'/teacher-skill-courses/${skill.trim()}/${teacherData.id}'} className='badge badge-pill text-dark bg-warning mr-2'>{skill.trim()}</Link> 
-                    )} */}
-                   {skillList?.map((skill,index)=>
+                {/* <p> {teacherData.skills}</p> */}
+                <p><strong>Skills : {skillList?.map((skill,index)=>
                     <tr>
-                    <td><Link to={'/teacher-skill-courses/'+skill.trim()+'/'+teacherData.id}> hj{skill.trim()}</Link></td>
+                    <td><Link className='badge badge-pill text-dark bg-warning mr-2' to={'/teacher-skill-courses/'+skill.trim()+'/'+teacherData.id}>{skill.trim()}</Link></td>
                     <hr/>
                 
                   
                   </tr>
-                    )}  
+                    )}   </strong>
+                {/* {skillList?.map((skill,index)=>
+                      <Link to ={'/teacher-skill-courses/${skill.trim()}/${teacherData.id}'} className='badge badge-pill text-dark bg-warning mr-2'>{skill.trim()}</Link> 
+                    )} */}
+                  
                     </p>
                 <p><strong>Recents: <Link to="/category/php"><strong>React JS Course</strong></Link></strong></p>
                 <p><strong>Rating : 4.5/5</strong></p>

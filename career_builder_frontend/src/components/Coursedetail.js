@@ -305,7 +305,7 @@ const removeFavorite=()=>{
                         <p><button onClick={markAsFavorite} type ="Add i your favorite course list" className='btn btn-outline-danger' ><i className="bi bi-heart-fill"></i></button></p>
                     }
                     {
-                      userLoginStatus==='success' && favoriteStatus!== 'success' &&
+                      userLoginStatus==='success' && favoriteStatus== 'success' &&
                         <p><button onClick={removeFavorite} type ="removed from the wish list" className='btn btn-danger' ><i className="bi bi-heart-fill"></i></button></p>
                     }
                    {

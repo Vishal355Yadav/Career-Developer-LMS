@@ -21,19 +21,13 @@ function TeacherChangePassword(){
         const teacherFormData=new FormData();
         teacherFormData.append("password",teacherData.password)
         try{
-// <<<<<<< HEAD
-            axios.post(baseUrl+'/teacher/change-password'+teacherId+'/',teacherFormData).then((response)=>{
+            axios.post(baseUrl+'/teacher/change-password/'+teacherId+'/',teacherFormData).then((response)=>{
                if(response.status===200){
-//                   window.location.href='/teacher-logout';
-// // =======
-//             axios.post(baseUrl+'/teacher/change-password/'+teacherId+'/',teacherFormData).then((response)=>{
-//                if(response.status==200){
-//                   window.location.href='/teacher-logout/';
-// // >>>>>>> d443d72d838f06987ac37e240d293ac412305fc4
+                  window.location.href='/teacher-logout';
              
-        }else{
-          alert('password not changed')
-        }
+                }else{
+                alert('password not changed')
+                }
             });
         }catch(error){
             console.log(error);

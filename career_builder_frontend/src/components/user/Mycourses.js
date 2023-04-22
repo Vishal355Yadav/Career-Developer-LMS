@@ -36,18 +36,12 @@ function Mycourses(){
                     </tr>
                 </thead>
                 <tbody>
-{/* <<<<<<< HEAD */}
-                    <td>Php Development</td>
-                    <td><Link to='/'>Love Babbar</Link></td>
-                    <td><button className='btn btn-primary active'>Unenroll</button></td>
-{/* ======= */}
                 	{courseData.map((row,index)=>
                 	<tr>
 	                    <td><Link to={`/detail/`+row.course.id}>{row.course.title}</Link></td>
 	                    <td><Link to={`/teacher-course-detail/`+row.course.teacher.id}>{row.course.teacher.full_name}</Link></td>
 	                </tr>
 	                )}
-{/* >>>>>>> d443d72d838f06987ac37e240d293ac412305fc4 */}
                 </tbody>
             </table>
         </div>
