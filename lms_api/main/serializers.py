@@ -5,7 +5,7 @@ from django.contrib.flatpages.models import FlatPage
 class TeacherSerializer(serializers.ModelSerializer):
 	class Meta:
 		model=models.Teacher
-		fields=['id','full_name','email','password','qualification','mobile_no','skills'] 
+		fields=['id','full_name','email','password','qualification','mobile_no','skills','teacher_courses','skill_list'] 
 	# def __init__(self, *args,** kwargs):
 	# 	super (CourseRatingSerializer, self).__init__(*args,**kwargs)
 	# 	request = self.context.get ('request')
@@ -13,6 +13,11 @@ class TeacherSerializer(serializers.ModelSerializer):
 	# 	if request and request.method == 'GET':
 	# 		self.Meta.depth = 1
 		depth=1
+
+class TeacherDashboardSerializer(serializers.ModelSerializer):
+	class Meta:
+		model=models.Teacher
+		fields=['total_teacher_courses','total_teacher_chapters','total_teacher_students'] 
 
 class FlatPagesSerializer(serializers.ModelSerializer):
 	class Meta:

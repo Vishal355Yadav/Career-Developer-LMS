@@ -7,7 +7,7 @@ function RecommendedCourses(){
     const [courseData,setcourseData]=useState([]);
     const studentId=localStorage.getItem('studentId');
    useEffect(()=>{
-        document.title='My Courses';
+        document.title='Recommended Courses';
         try{
             axios.get(baseUrl+'/fetch-recommended-courses/'+ studentId)
             .then((res)=>{ 
@@ -37,7 +37,7 @@ function RecommendedCourses(){
                 <tbody>
                     {courseData.map((row,index)=>
                     <tr>
-                        <td><Link to={`/detail/`+row.course.id}>{row.course.title}</Link></td>
+                        <td><Link to={`/CourseDetail/`+row.course.id}>{row.course.title}</Link></td>
                         <td>{row.course.techs}</td>
                     </tr>
                     )}

@@ -9,7 +9,7 @@ from rest_framework.response import Response
 from rest_framework import generics
 from rest_framework import permissions
 from django.contrib.flatpages.models import FlatPage
-from .serializers import TeacherSerializer,FlatPagesSerializer,ContactSerializer,FAQSerializer,CategorySerializer,CourseSerializer,ChapterSerializer,StudentSerializer,StudentCourseEnrollSerializer,CourseRatingSerializer,StudentFavoriteCourseSerializer
+from .serializers import TeacherSerializer,FlatPagesSerializer,ContactSerializer,FAQSerializer,CategorySerializer,CourseSerializer,ChapterSerializer,StudentSerializer,StudentCourseEnrollSerializer,CourseRatingSerializer,StudentFavoriteCourseSerializer,TeacherDashboardSerializer
 
 from . import models
 from django.db.models import Q
@@ -19,6 +19,10 @@ class TeacherList(generics.ListCreateAPIView):
 	queryset=models.Teacher.objects.all()
 	serializer_class = TeacherSerializer
 	permissions_classes=[permissions.IsAuthenticated]
+
+class TeacherDashboard(generics.ListCreateAPIView):
+    queryset=models.Teacher.objects.all()
+    serializer_class = TeacherDashboardSerializer
  
 class TeacherDetail(generics.RetrieveUpdateDestroyAPIView):
 	queryset=models.Teacher.objects.all()
