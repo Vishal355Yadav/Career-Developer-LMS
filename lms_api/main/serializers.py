@@ -113,3 +113,9 @@ class StudentAssignmentSerializer(serializers.ModelSerializer):
 			self.Meta.depth=2
 
 		# depth=1
+
+class NotificationSerializer(serializers.ModelSerializer):
+	class Meta: 
+		model=models.Notification
+		fields=['id', 'teacher', 'student', 'notif_subject','notif_for','notif_created_time','notifiread_status']		
+
