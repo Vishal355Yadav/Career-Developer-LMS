@@ -62,6 +62,11 @@ class StudentSerializer(serializers.ModelSerializer):
 		model=models.Student
 		fields=['id', 'full_name', 'email', 'password','username','interested_categories']
 
+class StudentDashboardSerializer(serializers.ModelSerializer):
+	class Meta:
+		model=models.Student
+		fields=['enrolled_courses','favorite_courses','complete_assignments','Pending_assignments'] 		
+
 class StudentCourseEnrollSerializer(serializers.ModelSerializer):
     class Meta:
         model=models.StudentCourseEnrollment
@@ -99,7 +104,7 @@ class CourseRatingSerializer(serializers.ModelSerializer):
 class StudentAssignmentSerializer(serializers.ModelSerializer): 
 	class Meta:
 		model=models.StudentAssignment
-		fields= ['id', 'teacher','student','title','detail','add_time']
+		fields= ['id', 'teacher','student','title','detail','student_status','add_time']
 	def __init__(self,*args, **kwargs):
 		super(StudentAssignmentSerializer,self).__init__(*args, **kwargs)
 		request=self.context.get('request')

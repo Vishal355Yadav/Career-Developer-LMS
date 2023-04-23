@@ -29,7 +29,7 @@ function TeacherDashboard(){
                <div className='row'>
                <div className='col-md-4'>
         <div className='card border-primary'>
-            <h5 className='card-header bg-success text-white'>Total Courses</h5>
+            <h5 className='card-header bg-primary text-white'>Total Courses</h5>
             <div className='card-body'>
               <h3><Link to="/teacher-courses">{dashboardData.total_teacher_courses}</Link></h3>
             </div>
@@ -45,7 +45,7 @@ function TeacherDashboard(){
         </div>
             <div className='col-md-4'>
         <div className='card border-info'>
-            <h5 className='card-header bg-success text-white'>Total Chapters</h5>
+            <h5 className='card-header bg-info text-white'>Total Chapters</h5>
             <div className='card-body'>
               <h3><Link to='/teacher-courses'>{dashboardData.total_teacher_chapters}</Link></h3>
             </div>

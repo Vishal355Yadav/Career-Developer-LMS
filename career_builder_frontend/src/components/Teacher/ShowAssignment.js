@@ -25,38 +25,7 @@ function ShowAssignment(){
     },[]);
     // console.log(chapterData);
     // const Swal=require('sweetalert2')
-//     const handleDeleteClick=(chapter_id)=>{
-//         Swal.fire({
-//             title:'confirm',
-//             text: 'Are you sure you want to delete this chapter?',
-//             icon:'info',
-//             confirmButtonText: 'Continue',
-//             showCancelButton:true
 
-//         }).then((result)=>{
-//             if(result.isConfirmed){
-//                 try{
-//                     axios.delete(baseUrl+'/chapter/'+chapter_id)
-//                     .then((res)=>{
-//                         Swal.fire('success','Data has been deleted.');
-//                         try{
-//                             axios.get(baseUrl+'/course-chapters/'+course_id)
-//                             .then((res)=>{
-//                                 settotalResult(res.data.length);
-//                                 setChapterData(res.data);
-//                             });
-//                 }catch(error){
-//                     console.log(error);
-//                 }
-//         });
-//     }catch(error){
-//         Swal.fire('error','Data has not been deleted!!.');
-//     }
-// }else{
-//      Swal.fire('error','Data has not been deleted!!.');
-// }
-// });
-// }
     return(
         <div className="container mt-4 ">
         <div className="row">
@@ -71,13 +40,17 @@ function ShowAssignment(){
                 <thead>
                     <tr>
                         <th>Title</th>
+                        <th>Student status</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {assignmentData.map((chapter,index)=>
+                    {assignmentData.map((row,index)=>
                     <tr>
-                    <td>{chapter.title}</td>
-                    
+                    <td>{row.title}</td>
+                    <td>
+                        { row.student_status==false  && <span className='badge bg-warning'> Pending</span>}
+                        {row.student_status==true && <span className='badge bg-success'>Completed</span>}
+                    </td>
                     </tr>
                     )} 
                 </tbody>

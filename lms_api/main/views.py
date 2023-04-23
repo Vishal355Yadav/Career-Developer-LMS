@@ -9,7 +9,7 @@ from rest_framework.response import Response
 from rest_framework import generics
 from rest_framework import permissions
 from django.contrib.flatpages.models import FlatPage
-from .serializers import TeacherSerializer,FlatPagesSerializer,ContactSerializer,FAQSerializer,CategorySerializer,CourseSerializer,ChapterSerializer,StudentSerializer,StudentCourseEnrollSerializer,CourseRatingSerializer,StudentFavoriteCourseSerializer,TeacherDashboardSerializer,StudentAssignmentSerializer
+from .serializers import TeacherSerializer,FlatPagesSerializer,ContactSerializer,FAQSerializer,CategorySerializer,CourseSerializer,ChapterSerializer,StudentSerializer,StudentCourseEnrollSerializer,CourseRatingSerializer,StudentFavoriteCourseSerializer,TeacherDashboardSerializer,StudentAssignmentSerializer,StudentDashboardSerializer
 
 from . import models
 from django.db.models import Q
@@ -20,7 +20,7 @@ class TeacherList(generics.ListCreateAPIView):
 	serializer_class = TeacherSerializer
 	permissions_classes=[permissions.IsAuthenticated]
 
-class TeacherDashboard(generics.ListCreateAPIView):
+class TeacherDashboard(generics.RetrieveAPIView):
     queryset=models.Teacher.objects.all()
     serializer_class = TeacherDashboardSerializer
  
@@ -130,6 +130,10 @@ class StudentList(generics.ListCreateAPIView):
     queryset=models.Student.objects.all()
     serializer_class=StudentSerializer
 # permission classes=[permissions.IsAuthenticated]
+
+class StudentDashboard(generics.RetrieveAPIView):
+    queryset=models.Student.objects.all()
+    serializer_class = StudentDashboardSerializer
 
 @csrf_exempt
 def student_login(request):
@@ -260,3 +264,22 @@ class MyAssignmentList(generics.ListCreateAPIView):
         student = models.Student.objects.get(pk=student_id)
         return  models.StudentAssignment .objects.filter (student=student)
                 
+class UpdateAssignment(generics.RetrieveUpdateDestroyAPIView):
+    queryset=models.StudentAssignment.objects.all()
+    serializer_class=StudentAssignmentSerializer   
+
+@csrf_exempt
+def student_change_password(request,student_id):
+    password=request.POST['password']
+
+    try:
+        studentData=models.Student.objects.get(id=student_id)
+    except models.Student.DoesNotExist:
+        studentData=None
+
+    if studentData:
+        models.Student.objects.filter(id=student_id).update(password=password)
+        return JsonResponse({'bool':True})
+
+    else:
+        return JsonResponse({'bool':False})    

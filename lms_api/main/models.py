@@ -75,6 +75,22 @@ class Student(models.Model):
 	def __str__(self):
 		return self.full_name
 
+	def enrolled_courses (self):
+		enrolled_courses=StudentCourseEnrollment.objects.filter(student=self).count()
+		return enrolled_courses
+
+	def favorite_courses (self):
+		favorite_courses=StudentFavoriteCourse.objects.filter(student=self).count()
+		return favorite_courses
+
+	def complete_assignments (self):
+		complete_assignments=StudentAssignment.objects.filter(student=self,student_status=False).count()
+		return complete_assignments	
+
+	def Pending_assignments (self):
+		Pending_assignments=StudentAssignment.objects.filter(student=self,student_status=False).count()
+		return Pending_assignments			
+
 	class Meta:
 		verbose_name_plural="4. Students"
 
@@ -174,6 +190,7 @@ class StudentAssignment(models.Model) :
 	teacher=models.ForeignKey(Teacher, on_delete=models.CASCADE,null=True)
 	title=models.CharField(max_length=200)
 	detail=models.TextField(null=True)
+	student_status=models.BooleanField(default=False,null=True)
 	add_time=models.DateTimeField(auto_now_add=True)
 
 	class Meta:
