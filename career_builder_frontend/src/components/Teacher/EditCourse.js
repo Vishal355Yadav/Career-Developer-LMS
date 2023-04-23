@@ -60,7 +60,7 @@ function EditCourse(){
 const formSubmit=()=>{ 
     const _formData=new FormData();
     _formData.append('category',courseData.category);
-    _formData.append('teacher',1);
+    _formData.append('teacher',course_id);
     _formData.append('title',courseData.title);
     _formData.append('description',courseData.description);
     if(courseData.f_img!=='' ){

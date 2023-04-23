@@ -7,6 +7,7 @@ import Dashboard from './user/Dashboard';
 import Register from './user/Register';
 import AllCourses from './AllCourses';
 import Logout from './user/StudentLogout';
+import StudentAssignments from './user/StudentAssignments';
 // teacher 
 import TeacherDetail from './TeacherDetail'
 import TeacherLogin from './Teacher/TeacherLogin';
@@ -36,7 +37,7 @@ import CategoryCourses from './CetegoryCourses';
 import TeacherSkillCourses from './TeacherSkillCourses';
 import TeacherAddChapter from './Teacher/TeacherAddChapter';
 import AddAssignment from './Teacher/AddAssignment';
-
+import ShowAssignment from './Teacher/ShowAssignment';
 
 function Main() {
     return (
@@ -64,6 +65,8 @@ function Main() {
           <Route path='/edit-course/:course_id' element ={<EditCourse/>}/>
           <Route path='/add-chapter/:course_id' element ={<TeacherAddChapter/>}/>
           <Route path='/add-assignment/:teacher_id/:student_id' element ={<AddAssignment/>}/>
+          <Route path='/show-assignment/:teacher_id/:student_id' element ={<ShowAssignment/>}/>
+          <Route path='/my-assignment/' element ={<StudentAssignments/>}/>
           <Route path='/teacher-courses' element ={<TeacherMycourses/>}/>
           <Route path='/enrolled-students/:course_id' element ={<EnrolledStudents/>}/>
           <Route path='/teacher-change-password' element ={<TeacherChangePassword/>}/>
