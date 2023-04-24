@@ -30,6 +30,11 @@ import ChangePassword from './user/ChangePassword';
 import Mycourses from './user/Mycourses';
 import CourseDetail  from './Coursedetail';
 import {Routes, Route} from 'react-router-dom';
+
+import AddQuiz  from './Teacher/AddQuiz';
+import AllQuiz  from './Teacher/AllQuiz';
+import EditQuiz  from './Teacher/EditQuiz';
+
 // import Mycourses from './user/Mycourses';
 import PopularCourses from './PopularCourses';
 import PopularTeacher from './PopularTeacher';
@@ -65,6 +70,11 @@ function Main() {
           <Route path='/edit-course/:course_id' element ={<EditCourse/>}/>
           <Route path='/add-chapter/:course_id' element ={<TeacherAddChapter/>}/>
           <Route path='/add-assignment/:teacher_id/:student_id' element ={<AddAssignment/>}/>
+          <Route path='/quiz' element ={<AllQuiz/>}/>
+          <Route path='/add-quiz' element ={<AddQuiz/>}/>
+          <Route path='/edit-quiz/:quiz_id' element ={<EditQuiz/>}/>
+
+
           <Route path='/show-assignment/:teacher_id/:student_id' element ={<ShowAssignment/>}/>
           <Route path='/my-assignments/' element ={<StudentAssignments/>}/>
           <Route path='/teacher-courses' element ={<TeacherMycourses/>}/>

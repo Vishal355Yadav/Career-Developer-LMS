@@ -68,7 +68,7 @@ const formSubmit=()=>{
     }
     _formData.append('techs',courseData.techs);
     try{
-        axios.post(baseUrl+'/teacher-course-detail/'+ course_id,_formData,{
+        axios.put(baseUrl +'/teacher-course-detail/'+ course_id,_formData,{
             headers:{
                 'content-type': 'multipart/form-data'
             }
@@ -129,7 +129,7 @@ const formSubmit=()=>{
                         <div className="col-sm-10">
                            <input type="file"  onChange={handleFileChange}  name='f_img' id="course_video" className="form-control" />
                            {courseData.prev_img &&
-                           <img src ={courseData.prev_img} width="300" />
+                           <img src ={courseData.prev_img} width="300" alt={courseData.title}/>
                            }
                         </div>
                        </div>

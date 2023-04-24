@@ -202,7 +202,7 @@ class StudentAssignment(models.Model) :
 class Quiz(models.Model):
 	teacher=models.ForeignKey(Teacher, on_delete=models.CASCADE,null=True)
 	title=models.CharField(max_length=200)
-	detail=models.TextField()
+	detail=models.TextField(null=True)
 	add_time=models.DateTimeField(auto_now_add=True)
 	class Meta:
 		verbose_name_plural="13. Quiz"

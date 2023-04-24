@@ -52,6 +52,17 @@ class CourseSerializer(serializers.ModelSerializer):
 
 		# depth=1
 
+class QuizSerializer(serializers.ModelSerializer): 
+	class Meta:
+		model=models.Quiz
+		fields= ['id', 'teacher','title','detail','add_time']
+	def __init__(self,*args, **kwargs):
+		super(QuizSerializer,self).__init__(*args, **kwargs)
+		request=self.context.get('request')
+		self.Meta.depth=0
+		if request and request.method =='GET':
+			self.Meta.depth=2
+
 class ChapterSerializer(serializers.ModelSerializer):
 	class Meta:
 		model=models.Chapter
