@@ -113,3 +113,14 @@ class StudentAssignmentSerializer(serializers.ModelSerializer):
 			self.Meta.depth=2
 
 		# depth=1
+
+class NotificationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=models.CourseRating
+        fields=['id','notif_for','notif_subject','notifiread_status']
+	# def __init__(self, *args,** kwargs):
+    #     super(NotificationSerializer, self).__init__(*args, **kwargs)
+    #     request = self.context.get ('request')
+    #     self.Meta.depth = 0
+    #     if request and request.method == 'GET':
+    #         self.Meta.depth = 1

@@ -262,6 +262,7 @@ class MyAssignmentList(generics.ListCreateAPIView):
     def get_queryset(self):
         student_id=self.kwargs[ 'student_id']
         student = models.Student.objects.get(pk=student_id)
+        models.Notification.objects.filter(student=student,notif_for='student',notif_subject='assignment').update(notfiread_status=True)
         return  models.StudentAssignment .objects.filter (student=student)
                 
 class UpdateAssignment(generics.RetrieveUpdateDestroyAPIView):
@@ -283,3 +284,12 @@ def student_change_password(request,student_id):
 
     else:
         return JsonResponse({'bool':False})    
+
+class NotificationList(generics.ListCreateAPIView):
+    queryset=models.Notification.objects.all()
+    serializer_class=NotificationSerializer 
+
+    def get_queryset(self):
+        student_id=self.kwargs['student_id']
+        student=models.Student.objects.get(pk=student_id)
+        return models.Notification.objects.filter(student=student,notif_for='student',notif_subject='assignment',notifiread_status=False) 

@@ -51,6 +51,20 @@ const formSubmit=()=>{
               timerProgressBar:true,
               showConfirmButton:false
             })
+            
+            const _notfiData=new FormData();
+            _notfiData.append('teacher',teacher_id);
+            _notfiData.append('notif_subject','assigntment');
+            _notfiData.append('notif_for','sutdent');
+            _notfiData.append('student',student_id);
+            axios.post(baseUrl+'/save-notification/',_notfiData,{
+                headers:{
+                    'Content-type':'multipart/form-data'
+                }
+            })
+            .then((res)=>{
+                console.log('Notification Added');
+            })
   
             window.location.reload();
           }

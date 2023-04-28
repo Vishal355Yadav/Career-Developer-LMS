@@ -48,6 +48,8 @@ urlpatterns = [
     path('my-assignments/<int:student_id>',views.MyAssignmentList.as_view()),
     path('update-assignment/<int:pk>',views.UpdateAssignment.as_view()),
     path('student/change-password/<int:student_id>/', views.student_change_password),
+    path('student/fetch-all-notifications/<int:student_id>/', views.NotificationList.as_view()),
+    path('save-notification/', views.NotificationList.as_view()),
 
 
 ]

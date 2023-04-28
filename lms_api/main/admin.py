@@ -22,3 +22,8 @@ admin.site.register(models.StudentCourseEnrollment)
 
 admin.site.register(models.CourseRating)
 admin.site.register(models.StudentAssignment)
+
+
+admin.site.register(models.Quiz)
+admin.site.register(models.QuizQuestions)
+admin.site.register(models.CourseQuiz)
