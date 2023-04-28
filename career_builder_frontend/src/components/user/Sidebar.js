@@ -1,18 +1,19 @@
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
+import {useEffect,useState} from 'react';
 import axios from 'axios';
-import  {useEffect,useState} from 'react';
 const baseUrl='http://127.0.0.1:8000/api';
+
 function Sidebar(){
-    const [notifData,setnotifData]=useState();
+    const [notifData,setnotifData]=useState([]);
     const studentId=localStorage.getItem('studentId');
     useEffect(()=>{
-        try {
+        try{
             axios.get(baseUrl+'/student/fetch-all-notifications/'+studentId)
             .then((res)=>{
                 console.log(res);
                 setnotifData(res.data);
             });
-        } catch (error) {
+        }catch(error){
             console.log(error);
         }
     },[]);

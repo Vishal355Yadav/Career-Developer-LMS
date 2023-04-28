@@ -56,7 +56,7 @@ function TeacherDetail(){
            </div>
            <div className="list-group list-group-flush">
             {courseData?.map((course,index)=>
-             <Link to ={'/detail/${course.id}'} className='list-group-item list-group-item-action'>{course.title}</Link>
+             <Link to ={'/CourseDetail/'+course.id} className='list-group-item list-group-item-action'>{course.title}</Link>
             )}
 
             
