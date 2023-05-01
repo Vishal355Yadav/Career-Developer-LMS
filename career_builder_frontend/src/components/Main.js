@@ -43,6 +43,10 @@ import TeacherSkillCourses from './TeacherSkillCourses';
 import TeacherAddChapter from './Teacher/TeacherAddChapter';
 import AddAssignment from './Teacher/AddAssignment';
 import ShowAssignment from './Teacher/ShowAssignment';
+import QuizQuestion from './Teacher/QuizQuestions';
+import AddQuizQuestion from './Teacher/AddQuizQuestion';
+
+import AssignQuiz from './Teacher/AssignQuiz';
 
 function Main() {
     return (
@@ -70,9 +74,14 @@ function Main() {
           <Route path='/edit-course/:course_id' element ={<EditCourse/>}/>
           <Route path='/add-chapter/:course_id' element ={<TeacherAddChapter/>}/>
           <Route path='/add-assignment/:teacher_id/:student_id' element ={<AddAssignment/>}/>
+          
+          {/* Quiz */}
           <Route path='/quiz' element ={<AllQuiz/>}/>
+          <Route path='/all-questions/:quiz_id' element ={<QuizQuestion/>}/>
           <Route path='/add-quiz' element ={<AddQuiz/>}/>
           <Route path='/edit-quiz/:quiz_id' element ={<EditQuiz/>}/>
+          <Route path='/add-quiz-question/:quiz_id' element ={<AddQuizQuestion/>}/>
+          <Route path='/assign-quiz/:course_id' element ={<AssignQuiz/>}/>
 
 
           <Route path='/show-assignment/:teacher_id/:student_id' element ={<ShowAssignment/>}/>
