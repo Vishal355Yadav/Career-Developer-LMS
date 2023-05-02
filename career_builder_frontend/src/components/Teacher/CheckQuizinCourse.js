@@ -8,6 +8,8 @@ const baseUrl='http://127.0.0.1:8000/api';
 
 function CheckQuizinCourse(props) {
     const [quizData,setquizData]=useState([]);
+    // const {course_id}=useParams();
+
     const teacherId=localStorage.getItem('teacherId');
     useEffect(()=>{
         document.title='Check Quizes In Course';
@@ -23,8 +25,8 @@ function CheckQuizinCourse(props) {
     const assignQuiz=(quiz_id)=>{
         const _formData=new FormData();
         _formData.append('teacher',teacherId);
-        _formData.append('course',course_id);
-        _formData.append('quiz',quiz_id);
+        _formData.append('course',props.course);
+        _formData.append('quiz',props.quiz);
         try{
             axios.post(baseUrl+'/student-assign-course/',_formData,{
                 headers:{
@@ -52,10 +54,11 @@ function CheckQuizinCourse(props) {
   return (
     <td>
         {quizData.bool==false &&
+          
             <button onClick={assignQuiz(props.quiz)} className='btn btn-success btn-sm ms-2'>Assign Quiz</button>
         }
 
-        {quizData.bool==false &&
+        {quizData.bool==true &&
         <span className='text-success'>Assigned</span>
         } 
     </td>

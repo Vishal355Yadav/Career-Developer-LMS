@@ -74,7 +74,7 @@ function QuizQuestion(){
                     </tr>
                 </thead>
                 <tbody>
-                    {questionData.map((row,index)=>
+                    {questionData.map((row,chapter)=>
                     <tr>
                     <td><Link to={'/edit-question/'+row.id}>{row.questions}</Link></td>
                     <td>{chapter.remarks}</td>

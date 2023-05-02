@@ -9,7 +9,7 @@ from rest_framework.response import Response
 from rest_framework import generics
 from rest_framework import permissions
 from django.contrib.flatpages.models import FlatPage
-from .serializers import TeacherSerializer,FlatPagesSerializer,ContactSerializer,FAQSerializer,CategorySerializer,CourseSerializer,ChapterSerializer,StudentSerializer,StudentCourseEnrollSerializer,CourseRatingSerializer,StudentFavoriteCourseSerializer,TeacherDashboardSerializer,StudentAssignmentSerializer,StudentDashboardSerializer,NotificationSerializer,QuizSerializer,QuestionSerializer,CouseQuizSerializer
+from .serializers import TeacherSerializer,FlatPagesSerializer,ContactSerializer,FAQSerializer,CategorySerializer,CourseSerializer,ChapterSerializer,StudentSerializer,StudentCourseEnrollSerializer,CourseRatingSerializer,StudentFavoriteCourseSerializer,TeacherDashboardSerializer,StudentAssignmentSerializer,StudentDashboardSerializer,NotificationSerializer,QuizSerializer,QuestionSerializer,CourseQuizSerializer
 
 from . import models
 from django.db.models import Q
@@ -321,13 +321,14 @@ class QuizQuestionList(generics.ListAPIView):
         quiz = models.Quiz.objects.get(pk=quiz_id)
         return  models. Quiz.objects.filter (quiz=quiz)
 
-class CouseQuizList(generics.ListCreateAPIView):
-    queryset=models.CouseQuiz.objects.all()
-    serializer_class=CouseQuizSerializer
+class CourseQuizList(generics.ListCreateAPIView):
+    queryset=models.CourseQuiz.objects.all()
+    serializer_class=CourseQuizSerializer
 
 def fetch_quiz_assign_status(request,quiz_id,course_id):
     quiz=models.Quiz.objects.filter(id=quiz_id).first()
-    course=models.Course.objects.filter(id=course_id,quiz=quiz).count()
+    course=models.Course.objects.filter(id=course_id).first()
+    assignStatus=models.CourseQuiz.objects.filter(course=course,quiz=quiz).count()
     if assignStatus:
         return JsonResponse({'bool':True})
     else:

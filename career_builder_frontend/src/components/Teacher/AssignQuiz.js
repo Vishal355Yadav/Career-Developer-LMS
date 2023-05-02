@@ -11,7 +11,7 @@ function TeacherMycourses(){
     const [courseData,setcourseData]=useState([]);
     const [quizData,setquizData]=useState([]);
     const [assignStatus,setassignStatus]=useState();
-
+    const {quiz_id}=useParams();
     const [totalResult,settotalResult]=useState(0);
     const teacherId=localStorage.getItem('teacherId');
     const {course_id}=useParams();
@@ -29,7 +29,7 @@ function TeacherMycourses(){
         }
 
         try{
-            axios.get(baseUrl+'/quiz/'+course_id)
+            axios.get(baseUrl+'/course/'+course_id)
             .then((res)=>{
               // console.log(res);
               setcourseData(res.data);              
@@ -102,20 +102,19 @@ function TeacherMycourses(){
                     </tr>
                 </thead>
                 <tbody>
+                  {/* {console.log(quizData)} */}
                     {quizData.map((row,index)=>
                     
                     <tr>
                     <td><Link to={'/all-questions/'+row.id}>{row.title}</Link>
                     <hr/>
-
                     </td>
-                    <CheckQuizinCourse quiz={row.id} course={course.id}/>
+                    <CheckQuizinCourse quiz={row.id} course={course_id}/>
                   </tr>
                     )} 
                 </tbody>
             </table>
         </div>
-
     </div>   
                </section>
             </div>

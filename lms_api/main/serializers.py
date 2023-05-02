@@ -139,7 +139,7 @@ class NotificationSerializer(serializers.ModelSerializer):
 
 class QuestionSerializer(serializers.ModelSerializer):
 	class Meta:
-		model=models.QuziQuestions
+		model=models.QuizQuestions
 		fields= ['id','quiz','question','ans1','ans2', 'ans3','ans4','right_ans']
 	def __init__(self,*args, **kwargs):
 		super(ChapterSerializer,self).__init__(*args, **kwargs)

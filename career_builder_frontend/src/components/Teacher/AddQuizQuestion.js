@@ -41,7 +41,7 @@ const formSubmit=()=>{
     _formData.append('ans4',questionData.ans4);
     _formData.append('right_ans',questionData.right_ans);
     try{
-        axios.post(baseUrl+'/quiz-questions/',quiz_id_formData,{
+        axios.post(baseUrl+'/quiz-questions/',quiz_id,_formData,{
             headers:{
                 'content-type': 'multipart/form-data'
             }
