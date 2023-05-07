@@ -6,12 +6,14 @@ urlpatterns = [
     path('teacher/<int:pk>/', views.TeacherDetail.as_view()),
     path('teacher/dashboard/<int:pk>/', views.TeacherDashboard.as_view()),
     path('teacher-login', views.teacher_login),
+    path('popular-teachers/', views.TeacherList.as_view()),
     path('pages/', views.FlatPagesList.as_view()),
     path('pages/<int:pk>/<str:page_slug>/', views.FlatPagesDetail.as_view()),
     path('contact/', views.ContactList.as_view()),
     path('faq/', views.FaqList.as_view()),
     path('category/', views. CategoryList.as_view()), 
     # Course
+    path('popular-courses/',views.CourseRatingList.as_view()),
     path('course/',views.CourseList.as_view()),
     # Course Detail
     path('course/<int:pk>/', views.CourseDetailView.as_view()),
@@ -22,8 +24,10 @@ urlpatterns = [
     path ('course-chapters/<int:course_id>', views.CourseChapterList.as_view()),
     # Teacher Courses
     path('teacher-courses/<int:teacher_id>', views.TeacherCourseList.as_view()),
+
     # Course Detail  
     path( 'teacher-course-detail/<int:pk>', views.TeacherCourseDetail.as_view()),
+    path ('update-view/<int:course_id>', views.update_view),
     # Student
     path('student/', views. StudentList.as_view()),
     path('student/dashboard/<int:pk>/', views.StudentDashboard.as_view()),
@@ -36,7 +40,7 @@ urlpatterns = [
     path('fetch-all-enrolled-students/<int:teacher_id>',views. EnrolledStudentList.as_view() ),
     path('fetch-enrolled-students/<int:course_id>',views. EnrolledStudentList.as_view() ),
     path('fetch-enrolled-courses/<int:student_id>',views. EnrolledStudentList.as_view() ),
-    path('fetch-favorite-courses/<int:student_id>',views. StudentFavoriteCourseList.as_view() ),
+    path('fetch-favorite-courqses/<int:student_id>',views. StudentFavoriteCourseList.as_view() ),
 
     path('fetch-recommended-courses/<int:studentId>',views. CourseList.as_view() ),
     path('student-add-favorite-course/',views. StudentFavoriteCourseList.as_view() ),

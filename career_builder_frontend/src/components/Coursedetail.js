@@ -9,6 +9,7 @@ const baseUrl='http://127.0.0.1:8000/api';
 function CourseDetail(){
   const [courseData,setcourseData]=useState([]);
   const [chapterData,setchapterData]=useState([]);
+  const [courseViews,setcourseViews]=useState(0);
   const [teacherData,setteacherData]=useState([]);
   const [relatedcourseData,setrelatedcourseData]=useState([]);
   const [techListData,settechListData]=useState([]);
@@ -35,6 +36,11 @@ function CourseDetail(){
           setAvgRating(res.data.course_rating)
         }
       });
+      axios.get(baseUrl+'/update-view/'+course_id)
+      .then((res)=>{
+       setcourseViews(res.data.views)
+      });
+
     }
     catch(error){
       console.log(error);
@@ -250,6 +256,7 @@ const removeFavorite=()=>{
                     <p><strong>Duration :3 Hours 30 Minutes</strong></p>
                     <p><strong>Total Enrolled: {courseData.total_enrolled_students} Student(s)</strong></p>
                     <p><strong>Rating : {AvgRating}/5
+                    <p> <strong> Views :{courseViews}</strong></p>
                     {
                      enrollStatus==='success' && userLoginStatus === 'success' &&
                       <>

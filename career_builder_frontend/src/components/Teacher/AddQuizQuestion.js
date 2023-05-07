@@ -10,7 +10,7 @@ function AddQuizQuestion(){
 
     const[questionData,setQuestionData]=useState({
         quiz:'',
-        quesiton:'', 
+        question:'', 
          ans1:'',
          ans2:'',
          ans3:'',
@@ -20,7 +20,7 @@ function AddQuizQuestion(){
   
 
     useEffect(()=>{
-        document.title='Add Chapter'; 
+        document.title='Add Quiz Questions'; 
     },[]);
     
     const handleChange=(event)=>{
@@ -34,14 +34,14 @@ const formSubmit=()=>{
     const _formData=new FormData();
    
     _formData.append('quiz',quiz_id);
-    _formData.append('quesiton',questionData.quesiton);
+    _formData.append('quesiton',questionData.question);
     _formData.append('ans1',questionData.ans1);
     _formData.append('ans2',questionData.ans2);
     _formData.append('ans3',questionData.ans3);
     _formData.append('ans4',questionData.ans4);
     _formData.append('right_ans',questionData.right_ans);
     try{
-        axios.post(baseUrl+'/quiz-questions/',quiz_id,_formData,{
+        axios.post(baseUrl+'/quiz-questions/'+quiz_id,_formData,{
             headers:{
                 'content-type': 'multipart/form-data'
             }
@@ -82,7 +82,7 @@ const formSubmit=()=>{
                     <form>
                     <div className="mb-3 row">
                         <label for="title" className="col-sm-2 col-form-label">Tittle</label>
-                        <input type="text" onChange={handleChange}  name='title' className="form-control"  id="title"/>
+                        <input type="text" onChange={handleChange}  name='question' className="form-control"  id="title"/>
                     </div>
                     <div className="mb-3 row">
                         <label for="title" className="col-sm-2 col-form-label">Ans1</label>

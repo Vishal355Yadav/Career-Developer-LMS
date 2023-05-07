@@ -9,6 +9,7 @@ class Teacher(models.Model):
 	password=models.CharField(max_length=100,blank=True,null=True)
 	qualification=models.CharField(max_length=100)
 	mobile_no=models.CharField(max_length=100)
+	profile_img=models.ImageField(upload_to='teacher_img/',null=True)
 	skills= models.TextField()
 
 	class Meta:
@@ -46,6 +47,7 @@ class Course(models.Model):
 	description=models.TextField()
 	featured_img=models.ImageField(upload_to='course_imgs/',null=True)
 	techs=models.TextField(null=True)
+	course_views=models.BigIntegerField(default=0)
 
 	class Meta:
 		verbose_name_plural="03. Courses"

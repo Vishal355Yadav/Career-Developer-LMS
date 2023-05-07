@@ -15,15 +15,19 @@ from . import models
 from django.db.models import Q
 
 
-class TeacherList(generics.ListCreateAPIView):
-	queryset=models.Teacher.objects.all()
-	serializer_class = TeacherSerializer
-	permissions_classes=[permissions.IsAuthenticated]
-
 class TeacherDashboard(generics.RetrieveAPIView):
     queryset=models.Teacher.objects.all()
     serializer_class = TeacherDashboardSerializer
- 
+
+class TeacherList(generics.ListCreateAPIView):
+	queryset=models.Teacher.objects.all()
+	serializer_class = TeacherSerializer
+	# permissions_classes=[permissions.IsAuthenticated]
+def get_queryset(self):
+    if 'popular' in self.request.GET:
+        sql="SELECT *, COUNT(c.id) as total_courses FROM main_teacher as t INNER JOIN main_courses as c ON c.teacher_id=t.id GROUP BY t.id ORDER BY total_course desc"
+        return models.Teacher.objects.raw(sql)
+
 class TeacherDetail(generics.RetrieveUpdateDestroyAPIView):
 	queryset=models.Teacher.objects.all()
 	serializer_class = TeacherSerializer
@@ -214,10 +218,15 @@ class CourseRatingList(generics.ListCreateAPIView):
     queryset=models.CourseRating.objects.all()
     serializer_class=CourseRatingSerializer
 
-    # def get_queryset(self):
-    #     course_id=self.kwargs['course_id']
-    #     course = models.Course.objects.get (pk=course_id)
-    #     return models.CourseRating.objects.filter(course=course)
+    def get_queryset(self):
+        if 'popular' in self.request.GET:
+            sql="SELECT *, AVG(cr.rating) as avg_rating FROM main_courserating as cr INNER JOIN main_course as c ON cr.course_id=c.id GROUP BY c.id ORDER BY avg_rating desc LIMIT 4"
+            return models.CourseRating.objects.raw(sql)
+
+        if 'all' in self.request.GET:
+            sql="SELECT *, AVG(cr.rating) as avg_rating FROM main_courserating as cr INNER JOIN main_course as c ON cr.course_id=c.id GROUP BY c.id ORDER BY avg_rating desc"
+            return models.CourseRating.objects.raw(sql)    
+        
     
 def fetch_rating_status (request, student_id, course_id):
     student=models.Student.objects.filter(id=student_id).first()
@@ -314,7 +323,7 @@ class QuizDetailView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class=QuizSerializer
 
 class QuizQuestionList(generics.ListAPIView):
-    # queryset=models.Chapter.objects.all()
+    queryset=models.QuizQuestions.objects.all()
     serializer_class = QuestionSerializer
     def get_queryset(self):
         quiz_id=self.kwargs[ 'quiz_id']
@@ -333,3 +342,10 @@ def fetch_quiz_assign_status(request,quiz_id,course_id):
         return JsonResponse({'bool':True})
     else:
         return JsonResponse({'bool':False})
+
+
+def update_view(request,course_id):
+    queryset=models.Course.objects.filter(pk=course_id).first()
+    queryset.course_views+=1
+    queryset.save()
+    return JsonResponse({'views':queryset.course_views})

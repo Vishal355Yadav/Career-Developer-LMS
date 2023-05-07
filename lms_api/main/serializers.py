@@ -5,7 +5,7 @@ from django.contrib.flatpages.models import FlatPage
 class TeacherSerializer(serializers.ModelSerializer):
 	class Meta:
 		model=models.Teacher
-		fields=['id','full_name','email','password','qualification','mobile_no','skills','teacher_courses','skill_list'] 
+		fields=['id','full_name','email','password','qualification','mobile_no','profile_img','skills','teacher_courses','skill_list','total_teacher_courses'] 
 	# def __init__(self, *args,** kwargs):
 	# 	super (CourseRatingSerializer, self).__init__(*args,**kwargs)
 	# 	request = self.context.get ('request')
@@ -72,7 +72,7 @@ class ChapterSerializer(serializers.ModelSerializer):
 		request=self.context.get('request')
 		self.Meta.depth=0
 		if request and request.method =='GET':
-			self.Meta.depth=1
+			self.Meta.depth=2
 
 
 class StudentSerializer(serializers.ModelSerializer):
@@ -140,7 +140,7 @@ class NotificationSerializer(serializers.ModelSerializer):
 class QuestionSerializer(serializers.ModelSerializer):
 	class Meta:
 		model=models.QuizQuestions
-		fields= ['id','quiz','question','ans1','ans2', 'ans3','ans4','right_ans']
+		fields= ['id','quiz','questions','ans1','ans2', 'ans3','ans4','right_ans']
 	def __init__(self,*args, **kwargs):
 		super(ChapterSerializer,self).__init__(*args, **kwargs)
 		request=self.context.get('request')

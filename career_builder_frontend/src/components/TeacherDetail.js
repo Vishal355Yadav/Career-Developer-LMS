@@ -28,7 +28,7 @@ function TeacherDetail(){
         <div className="container mt-4 ">
         <div className="row">
             <div className="col-4">
-            <img src="/logo512.png" className="img-thumbnail" alt="Teacher Image"/>
+            <img src={teacherData.profile_img} className="img-thumbnail" alt={teacherData.full_name}/>
             </div>
             <div className='col-8'>
                 <h3>{teacherData.full_name}</h3>
