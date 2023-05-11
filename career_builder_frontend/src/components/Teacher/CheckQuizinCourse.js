@@ -28,7 +28,7 @@ function CheckQuizinCourse(props) {
         _formData.append('course',props.course);
         _formData.append('quiz',props.quiz);
         try{
-            axios.post(baseUrl+'/student-assign-course/',_formData,{
+            axios.post(baseUrl+'/quiz-assign-course/',_formData,{
                 headers:{
                     'content-type': 'multipart/form-data'
                 }
@@ -51,6 +51,8 @@ function CheckQuizinCourse(props) {
         console.log(error);
       }
     }
+    console.log(props)
+    console.log(quizData)
   return (
     <td>
         {quizData.bool==false &&

@@ -63,4 +63,6 @@ urlpatterns = [
 
     path('quiz-assign-course/', views.CourseQuizList.as_view()),
     path('student-assign-course/', views.CourseQuizList.as_view()),
+    path('fetch-assigned-quiz/<int:course_id>',views. CourseQuizList.as_view() ),
+
 ]

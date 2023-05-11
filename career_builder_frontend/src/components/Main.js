@@ -35,6 +35,9 @@ import AddQuiz  from './Teacher/AddQuiz';
 import AllQuiz  from './Teacher/AllQuiz';
 import EditQuiz  from './Teacher/EditQuiz';
 
+import CourseQuizList from './user/CourseQuizList';
+import TakeQuiz from './user/TakeQuiz';
+
 // import Mycourses from './user/Mycourses';
 import PopularCourses from './PopularCourses';
 import PopularTeacher from './PopularTeacher';
@@ -93,6 +96,10 @@ function Main() {
           <Route path='/my-users' element ={<MyUsers/>}/>
           <Route path='/teacher-detail/:teacher_id' element ={<TeacherDetail/>}/>
           
+          <Route path='/course-quiz/:course_id' element ={<CourseQuizList/>}/>
+          <Route path='/take-quiz/:quiz_id' element ={<TakeQuiz/>}/>
+
+
           <Route path='/all-courses' element ={<AllCourses/>}/>
           <Route path='/all-chapters/:course_id' element ={<AllChapters/>}/>
           <Route path='/edit-chapter/:chapter_id' element ={<EditChapter/>}/>

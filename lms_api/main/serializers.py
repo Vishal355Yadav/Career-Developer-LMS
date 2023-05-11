@@ -142,7 +142,7 @@ class QuestionSerializer(serializers.ModelSerializer):
 		model=models.QuizQuestions
 		fields= ['id','quiz','questions','ans1','ans2', 'ans3','ans4','right_ans']
 	def __init__(self,*args, **kwargs):
-		super(ChapterSerializer,self).__init__(*args, **kwargs)
+		super(QuestionSerializer,self).__init__(*args, **kwargs)
 		request=self.context.get('request')
 		self.Meta.depth=0
 		if request and request.method =='GET':
@@ -150,10 +150,10 @@ class QuestionSerializer(serializers.ModelSerializer):
 
 class CourseQuizSerializer(serializers.ModelSerializer):
     class Meta:
-        model=models.StudentCourseEnrollment
+        model=models.CourseQuiz
         fields =['id', 'teacher','course', 'quiz','add_time']
     def __init__ (self,*args,**kwargs):
-        super (StudentCourseEnrollSerializer, self). __init__ (*args, **kwargs)
+        super (CourseQuizSerializer, self). __init__ (*args, **kwargs)
         request = self.context.get ('request')
         self.Meta.depth = 0
         if request and request.method =='GET':

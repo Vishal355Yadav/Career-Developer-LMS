@@ -10,7 +10,7 @@ function AddQuizQuestion(){
 
     const[questionData,setQuestionData]=useState({
         quiz:'',
-        question:'', 
+        questions:'', 
          ans1:'',
          ans2:'',
          ans3:'',
@@ -34,7 +34,7 @@ const formSubmit=()=>{
     const _formData=new FormData();
    
     _formData.append('quiz',quiz_id);
-    _formData.append('quesiton',questionData.question);
+    _formData.append('questions',questionData.questions);
     _formData.append('ans1',questionData.ans1);
     _formData.append('ans2',questionData.ans2);
     _formData.append('ans3',questionData.ans3);
@@ -82,7 +82,7 @@ const formSubmit=()=>{
                     <form>
                     <div className="mb-3 row">
                         <label for="title" className="col-sm-2 col-form-label">Tittle</label>
-                        <input type="text" onChange={handleChange}  name='question' className="form-control"  id="title"/>
+                        <input type="text" onChange={handleChange}  name='questions' className="form-control"  id="title"/>
                     </div>
                     <div className="mb-3 row">
                         <label for="title" className="col-sm-2 col-form-label">Ans1</label>
@@ -104,11 +104,11 @@ const formSubmit=()=>{
                         <label for="title" className="col-sm-2 col-form-label">Right Answer</label>
                         <input type="text" onChange={handleChange}  name='right_ans' className="form-control"  id="title"/>
                     </div>
-                    <div className="mb-3 row">
+                    {/* <div className="mb-3 row">
                         <label for="title" className="col-sm-2 col-form-label">Tittle</label>
                         <input type="text" onChange={handleChange}  name='title' className="form-control"  id="title"/>
                     </div>
-                    
+                     */}
                     <hr></hr>
                         <button type='button' onClick={formSubmit} className='btn btn-primary'>update</button>
                     </form>

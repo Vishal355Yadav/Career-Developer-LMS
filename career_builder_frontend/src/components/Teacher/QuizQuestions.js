@@ -64,7 +64,7 @@ function QuizQuestion(){
            </aside>
            <section className='col-md-9'>
            <div className='card'>
-    <h5 className='card-header'> All Questions({totalResult}) <Link className='btn btn-success float-end btn-sm' to={'/add-question/'+quiz_id}> Add Question</Link> </h5>
+    <h5 className='card-header'> All Questions({totalResult}) <Link className='btn btn-success float-end btn-sm' to={'/add-quiz-question/'+quiz_id}> Add Question</Link> </h5>
     <div className='card-body'>
     <table className='table table-bordered'>
                 <thead>

@@ -322,17 +322,21 @@ class QuizDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset=models.Quiz.objects.all()
     serializer_class=QuizSerializer
 
-class QuizQuestionList(generics.ListAPIView):
-    queryset=models.QuizQuestions.objects.all()
+class QuizQuestionList(generics.ListCreateAPIView):
     serializer_class = QuestionSerializer
     def get_queryset(self):
         quiz_id=self.kwargs[ 'quiz_id']
         quiz = models.Quiz.objects.get(pk=quiz_id)
-        return  models. Quiz.objects.filter (quiz=quiz)
+        return  models. QuizQuestions.objects.filter (quiz=quiz)
 
 class CourseQuizList(generics.ListCreateAPIView):
     queryset=models.CourseQuiz.objects.all()
     serializer_class=CourseQuizSerializer
+    def get_queryset(self):
+        if 'course_id' in self.kwargs:
+            course_id=self.kwargs['course_id']
+            course=models.Course.objects.get(pk=course_id)
+            return models.CourseQuiz.objects.filter(course=course)
 
 def fetch_quiz_assign_status(request,quiz_id,course_id):
     quiz=models.Quiz.objects.filter(id=quiz_id).first()
