@@ -57,7 +57,7 @@ function CheckQuizinCourse(props) {
     <td>
         {quizData.bool==false &&
           
-            <button onClick={assignQuiz(props.quiz)} className='btn btn-success btn-sm ms-2'>Assign Quiz</button>
+            <button onClick={()=>assignQuiz(props.quiz)} className='btn btn-success btn-sm ms-2'>Assign Quiz</button>
         }
 
         {quizData.bool==true &&

@@ -2,6 +2,7 @@ import Sidebar from './Sidebar';
 import {Link,useParams} from 'react-router-dom';
 import  {useEffect,useState} from 'react';
 import axios from 'axios';
+import CheckQuizStatusforStudent from './CheckQuizStatusforStudent';
 const baseUrl='http://127.0.0.1:8000/api';
 function CourseQuizList(){
 	const [quizData,setQuizData]=useState([]);
@@ -40,13 +41,9 @@ function CourseQuizList(){
                     {quizData.map((row,index)=>
                         <tr>
 	                    <td>{row.quiz.title}</td>
-                        <td><Link className='btn btn-sm btn-warning' to={`/take-quiz/`+ row.quiz.id}>Take Quiz</Link></td>
+                        <CheckQuizStatusforStudent quiz={row.quiz.id} student={studentId}/>
 	                </tr>
                         )}
-                <tr>
-	                    <td>Python Quiz</td>
-                        <td className='text-success'>Attempted</td>
-	                </tr>
 	              
                 	
 	              
