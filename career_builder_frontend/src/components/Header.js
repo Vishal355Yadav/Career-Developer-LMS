@@ -9,15 +9,19 @@ function Header() {
            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search by course title" aria-label="Search" />
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
           <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div className="navbar-nav ms-auto">
               <Link className="nav-link active" aria-current="page" to="/">Home</Link>
               <Link className="nav-link" to="/all-courses">Course</Link>
               {/* <a className="nav-link" href="#">Teacher</a> */}
               <li className="nav-item dropdown">
-                 <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                 <Link className="nav-link dropdown-toggle" to="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Teacher 
-                 </a>
+                 </Link>
                 <ul className="dropdown-menu">
                   {teacherLoginStatus!='true' &&
                   <>
@@ -28,14 +32,14 @@ function Header() {
                   {teacherLoginStatus=='true' &&
                   <>          
                   <li><Link className="dropdown-item" to="/teacher-dashboard">Dashboard</Link></li>
-                  <li><a className="dropdown-item" href="/teacher-logout">Logout</a></li>
+                  <li><Link className="dropdown-item" to="/teacher-logout">Logout</Link></li>
                   </>}
                 </ul>
               </li>
               <li className="nav-item dropdown">
-                 <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                 <Link className="nav-link dropdown-toggle" to="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     User
-                 </a>
+                 </Link>
                 <ul className="dropdown-menu">
                   {studentLoginStatus!='true' &&
                   <>
@@ -44,7 +48,7 @@ function Header() {
                   </>}
                   {studentLoginStatus==='true' && <>    
                   <li><Link className="dropdown-item" to="/student-dashboard">Dashboard</Link></li>
-                  <li><a className="dropdown-item" href="/logout">Logout</a></li>
+                  <li><Link className="dropdown-item" to="/logout">Logout</Link></li>
                   </>}
                 </ul>
               </li>
