@@ -6,6 +6,8 @@ import Swal from 'sweetalert2';
 const baseUrl='http://127.0.0.1:8000/api';
 function TeacherDashboard(){
   const [dashboardData,setdashboardData]=useState([]);
+  const [teacherData,setteacherData]=useState([]);
+  let {teacher_id}=useParams();
   const teacherId=localStorage.getItem('teacherId');
    useEffect(()=>{
         document.title='Teacher Dashboard';
@@ -18,6 +20,16 @@ function TeacherDashboard(){
         }catch(error){ 
             console.log(error);
         }
+        try{
+            axios.get(baseUrl+'/teacher/'+teacherId)
+            .then((res)=>{
+              // console.log(res);
+              setteacherData(res.data);
+            });
+          }
+          catch(error){
+            console.log(error);
+          }
     },[]);
     return(
         <div className="container mt-4 ">
@@ -26,6 +38,13 @@ function TeacherDashboard(){
                <TeacherSidebar/>
                </aside>
                <section className='col-md-9'>
+         <div className="container">
+            <h6>Welcome,</h6>
+            <h3 className="mb-1">{teacherData.full_name}</h3>
+            <br></br>
+            <br></br>
+           
+        </div>
                <div className='row'>
                <div className='col-md-4'>
         <div className='card border-primary'>

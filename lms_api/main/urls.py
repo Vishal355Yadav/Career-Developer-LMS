@@ -30,6 +30,7 @@ urlpatterns = [
     path ('update-view/<int:course_id>', views.update_view),
     # Student
     path('student/', views. StudentList.as_view()),
+    path('student/<int:pk>/', views.StudentDetail.as_view()),
     path('student/dashboard/<int:pk>/', views.StudentDashboard.as_view()),
     path('student-login', views.student_login),
 

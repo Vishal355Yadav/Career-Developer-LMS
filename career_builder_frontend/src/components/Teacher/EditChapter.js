@@ -108,7 +108,7 @@ useEffect(()=>{
                         <label for="Course_video" className="col-sm-2 col-form-label">Video</label>
                         <div className="col-sm-10">
                            <input type="file" onChange={handleFileChange}  name='video' className="form-control" id="course_video"/>
-                           {chapterData.prev_video &&
+                        {chapterData.prev_video &&
                            <video controls width="100%"  height="250" className='mt-2'>
                                 <source src={chapterData.prev_video} type="video/mp4"/>
                            </video>

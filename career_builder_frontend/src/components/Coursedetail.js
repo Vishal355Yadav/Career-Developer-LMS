@@ -193,8 +193,6 @@ const removeFavorite=()=>{
 }
 }
 
-  // console.log(relatedcourseData);
-
   const[ratingData,setratingData]=useState({
     rating:'',
     reviews:''
@@ -237,6 +235,10 @@ const removeFavorite=()=>{
 }
 
 };
+  const [display,setDisplay]=useState(false);
+  const onbtnClick=()=>{
+    setDisplay(!display);
+  }
 
   
     return(
@@ -345,7 +347,12 @@ const removeFavorite=()=>{
                             </div>
                             <div className="modal-body">
                             <div className="ratio ratio-16x9">
-                              <iframe src={chapter.video} title={chapter.title} allowfullscreen></iframe>
+                            {chapter.video &&
+                              <video controls width="100%"  height="250" className='mt-2'>
+                                {/* {console.log(chapter.video)} */}
+                                <source src={chapter.video} type="video/mp4"/>
+                              </video>
+                            }
                             </div>
                             </div>
                           </div>

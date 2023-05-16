@@ -28,6 +28,12 @@ def get_queryset(self):
         sql="SELECT *, COUNT(c.id) as total_courses FROM main_teacher as t INNER JOIN main_courses as c ON c.teacher_id=t.id GROUP BY t.id ORDER BY total_course desc"
         return models.Teacher.objects.raw(sql)
 
+
+class StudentDetail(generics.RetrieveUpdateDestroyAPIView):
+	queryset=models.Student.objects.all()
+	serializer_class = StudentSerializer
+	# permissions_classes=[permissions.IsAuthenticated]
+
 class TeacherDetail(generics.RetrieveUpdateDestroyAPIView):
 	queryset=models.Teacher.objects.all()
 	serializer_class = TeacherSerializer
