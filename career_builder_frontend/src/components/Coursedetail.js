@@ -349,8 +349,9 @@ const removeFavorite=()=>{
                             <div className="ratio ratio-16x9">
                             {chapter.video &&
                               <video controls width="100%"  height="250" className='mt-2'>
-                                {/* {console.log(chapter.video)} */}
-                                <source src={chapter.video} type="video/mp4"/>
+                                {console.log(chapter.video)}
+                                setVideoFilePath(URL.createObjectURL(event.target.files[0]))
+                                <source src={chapter.video} type="video/webm"/>
                               </video>
                             }
                             </div>
